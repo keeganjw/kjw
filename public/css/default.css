@@ -1,0 +1,21 @@
+a, a:visited {
+    color: #a7bdf3;
+    /* color: #f9b9b4; */
+}
+
+body {
+    background-color: #212243;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.1rem;
+    margin: 1rem auto;
+    max-width: 900px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 900;
+}
+
+p {
+    line-height: 1.5rem;
+}
