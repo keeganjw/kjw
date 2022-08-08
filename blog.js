@@ -19,7 +19,7 @@ const posts = [
 	{
 		title: 'Post 3',
 		dateCreated: '10/17/2020',
-		content: `Placerat in egestas erat imperdiet. Consectetur libero id faucibus nisl tincidunt eget.`
+		content: 'Placerat in egestas erat imperdiet. Consectetur libero id faucibus nisl tincidunt eget.'
 	},
 ];
 
@@ -28,7 +28,13 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+	posts.push({
+		title: req.body.title,
+		dateCreated: Date.now(),
+		content: req.body.content
+	});
 
+	res.redirect('/blog');
 });
 
 router.get('/new', (req, res) => {

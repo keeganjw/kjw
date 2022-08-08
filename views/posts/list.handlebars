@@ -3,6 +3,6 @@
 {{#each posts}}
 	<h2><a href="/blog/{{@index}}">{{this.title}}</a></h2>
 	<div><i>{{this.dateCreated}}</i></div>
-	<div>{{this.content}}</div>
+	<div>{{{this.content}}}</div>
 	<hr>
 {{/each}}
