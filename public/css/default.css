@@ -12,8 +12,31 @@ body {
     max-width: 900px;
 }
 
+form div {
+    padding-bottom: 1rem;
+}
+
+form input[type=text]{
+    width: 60%;
+}
+
+form textarea {
+    resize: vertical;
+    width: 100%;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-weight: 900;
+}
+
+hr {
+    background-color: white;
+    border: 0px;
+    height: 1px;
+}
+
+label {
+    display: block;
 }
 
 p {

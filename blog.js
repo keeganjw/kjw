@@ -27,8 +27,12 @@ router.get('/', (req, res) => {
 	res.render('posts/list', { title: 'Blog', posts: posts });
 });
 
+router.post('/', (req, res) => {
+
+});
+
 router.get('/new', (req, res) => {
-	res.render('posts/new')
+	res.render('posts/new', { title: 'Write New Post' });
 });
 
 router.get('/test-md', (req, res) => {
@@ -38,7 +42,7 @@ router.get('/test-md', (req, res) => {
 });
 
 router.get('/:post/edit', (req, res) => {
-	res.render('posts/edit')
+	res.render('posts/edit');
 });
 
 router.get('/:post', (req, res) => {
