@@ -1,44 +1,47 @@
 a, a:visited {
-    color: #a7bdf3;
-    /* color: #f9b9b4; */
+	color: #a7bdf3;
+	/* color: #f9b9b4; */
 }
 
 body {
-    background-color: #212243;
-    color: white;
-    font-family: 'Nunito', sans-serif;
-    font-size: 1.1rem;
-    margin: 1rem auto;
-    max-width: 900px;
+	background: rgb(2, 0, 32);
+	background: linear-gradient(180deg, rgba(2, 0, 32, 1) 0%, rgba(11, 11, 79, 1) 50%, rgba(6, 42, 85, 1) 100%) fixed;
+	background-repeat: no-repeat;
+	color: white;
+	font-family: 'Nunito', sans-serif;
+	font-size: 1.2rem;
+	margin: 1rem auto;
+	max-width: 900px;
+	padding: 1rem;
 }
 
 form div {
-    padding-bottom: 1rem;
+	padding-bottom: 1rem;
 }
 
 form input[type=text]{
-    width: 60%;
+	width: 60%;
 }
 
 form textarea {
-    resize: vertical;
-    width: 100%;
+	resize: vertical;
+	width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 900;
+	font-weight: 900;
 }
 
 hr {
-    background-color: white;
-    border: 0px;
-    height: 1px;
+	background-color: white;
+	border: 0px;
+	height: 1px;
 }
 
 label {
-    display: block;
+	display: block;
 }
 
 p {
-    line-height: 1.5rem;
+	line-height: 1.6rem;
 }
