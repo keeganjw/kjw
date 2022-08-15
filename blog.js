@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const showdown = require('showdown');
+const Post = require('./models/post');
 const fs = require('fs');
 const path = require('path');
 
@@ -30,14 +31,29 @@ router.get('/', (req, res) => {
 	res.render('posts/list', { title: 'Blog', posts: posts });
 });
 
-router.post('/', (req, res) => {
-	posts.push({
+router.post('/', async (req, res) => {
+	let post = new Post({
 		title: req.body.title,
-		dateCreated: Date.now(),
-		content: req.body.content
+		slug: '',
+		lede: '',
+		content: req.body.content,
 	});
 
-	res.redirect('/blog');
+	try {
+		post = await post.save();
+		res.redirect(`blog/${post.id}`);
+	}
+	catch (e) {
+		res.render('posts/new', { post: post });
+	}
+
+	// posts.push({
+	// 	title: req.body.title,
+	// 	dateCreated: Date.now(),
+	// 	content: req.body.content
+	// });
+
+	// res.redirect('/blog');
 });
 
 router.get('/new', (req, res) => {
