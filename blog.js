@@ -28,14 +28,14 @@ const posts = [
 ];
 
 router.get('/', (req, res) => {
-	res.render('posts/list', { title: 'Blog', posts: posts });
+	res.render('blog/list', { title: 'Blog', posts: posts });
 });
 
-router.post('/', async (req, res) => {
+router.post('/new', async (req, res) => {
 	let post = new Post({
 		title: req.body.title,
-		slug: '',
-		lede: '',
+		slug: 'asdf',
+		lede: 'asdf',
 		content: req.body.content,
 	});
 
@@ -43,31 +43,24 @@ router.post('/', async (req, res) => {
 		post = await post.save();
 		res.redirect(`blog/${post.id}`);
 	}
-	catch (e) {
-		res.render('posts/new', { post: post });
+	catch (error) {
+		console.log(error);
+		res.render('blog/new', { title: 'Write New Post', post: post });
 	}
-
-	// posts.push({
-	// 	title: req.body.title,
-	// 	dateCreated: Date.now(),
-	// 	content: req.body.content
-	// });
-
-	// res.redirect('/blog');
 });
 
 router.get('/new', (req, res) => {
-	res.render('posts/new', { title: 'Write New Post' });
+	res.render('blog/new', { title: 'Write New Post', post: new Post() });
 });
 
 router.get('/test-md', (req, res) => {
 	const md = fs.readFileSync(path.resolve(__dirname, 'markdown/test.md'), 'utf8');
 	const html = markdown.makeHtml(md);
-	res.render('posts/post', { title: 'Markdown Test', dateCreated: '1/1/2000', content: html });
+	res.render('blog/post', { title: 'Markdown Test', dateCreated: '1/1/2000', content: html });
 });
 
 router.get('/:post/edit', (req, res) => {
-	res.render('posts/edit');
+	res.render('blog/edit');
 });
 
 router.get('/:post', (req, res) => {
@@ -75,7 +68,7 @@ router.get('/:post', (req, res) => {
 	if(id >= 0 && id < posts.length) {
 		let post = posts[id];
 		post.content = markdown.makeHtml(post.content);
-		res.render('posts/post', post);
+		res.render('blog/post', post);
 	}
 	else {
 		res.status(400);
