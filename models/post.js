@@ -5,20 +5,33 @@ const postSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
+	author: {
+		type: String,
+		required: true
+	},
 	slug: {
 		type: String,
-		required: true
+		required: true,
+		lowercase: true,
+		unique: true
 	},
-	lede: {
+	description: {
 		type: String,
 		required: true
 	},
-	content: {
+	article: {
 		type: String,
 		required: true
+	},
+	isPublished: {
+		type: Boolean,
+		required: true,
+		default: false
 	},
 	dateCreated: {
 		type: Date,
+		required: true,
+		immutable: true,
 		default: Date.now
 	}
 });

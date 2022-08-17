@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 // Connect to MongoDB database
 mongoose.connect(secrets.connectionString)
 .then((result) => console.log('Connected to the MongoDB database.'))
-.catch((error) => console.log(error));
+.catch((error) => console.error(error));
 
 // Set view engine
 app.engine('handlebars', handlebars.engine({

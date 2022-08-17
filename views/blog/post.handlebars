@@ -1,5 +1,7 @@
-<h1>{{title}}</h1>
+<h1>{{post.title}}</h1>
 
-<div><i>{{dateCreated}}</i></div>
+<div>by {{post.author}}</div>
 
-{{{content}}}
+<div>on <i>{{post.dateCreated}}</i></div>
+
+{{{post.article}}}
