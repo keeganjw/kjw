@@ -1,7 +1,17 @@
 <h1>{{post.title}}</h1>
 
+<h3>
+	{{post.description}}
+</h3>
+
 <div>by {{post.author}}</div>
 
 <div>on {{post.dateCreated}}</div>
+
+<div>Is Published: {{post.isPublished}}</div>
+
+<div>
+	<a href="/admin/edit/{{post.slug}}">Edit Post</a>
+</div>
 
 {{{post.article}}}

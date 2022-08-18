@@ -1,11 +1,11 @@
 <h1>New Post</h1>
 
-<form action="/blog/new" method="post">
+<form action="/admin/new" method="post">
 	{{> post-form-fields }}
 
 	<div>
-		<input type="submit" name="btnPost" value="Post">
-		<input type="submit" name="btnDraft" value="Save As Draft">
-		<input type="submit" formaction="/blog/preview" value="Preview">
+		<button type="submit" name="submit" value="publish">Publish</button>
+		<button type="submit" name="submit" value="draft">Save As Draft</button>
+		<button type="submit" formaction="/blog/preview" value="preview">Preview</button>
 	</div>
 </form>

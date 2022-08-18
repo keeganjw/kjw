@@ -1,10 +1,19 @@
 <h1>Edit Post</h1>
 
-<form action="/blog/new" method="post">
+<form action="/admin/edit/{{post.slug}}" method="post">
 	{{> post-form-fields }}
 
 	<div>
-		<input type="submit" value="Save">
-		<input type="button" value="Preview">
+		<input type="checkbox" name="isPublished" {{#if post.isPublished}}checked{{/if}}> Is Published
+	</div>
+
+	<div>
+		<button type="submit" name="save" value="save">Save</button>
+		{{!-- {{#if post.isPublished}}
+		<button type="submit" name="save" value="unpublish">Save & Unpublish</button>
+		{{else}}
+		<button type="submit" name="save" value="publish">Save & Publish</button>
+		{{/if}} --}}
+		<button type="button" value="preview">Preview</button>
 	</div>
 </form>

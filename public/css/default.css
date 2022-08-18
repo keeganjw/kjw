@@ -45,3 +45,10 @@ label {
 p {
 	line-height: 1.6rem;
 }
+
+textarea {
+	box-sizing: border-box;
+	font-family: 'Nunito', sans-serif;
+	height: 50rem;
+	padding: 1rem;
+}
