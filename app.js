@@ -3,6 +3,7 @@ const express = require('express');
 const handlebars = require('express-handlebars');
 const mongoose = require('mongoose');
 const blog = require('./blog');
+const admin = require('./admin');
 const secrets = require('./secrets/secrets');
 
 const app = express();
@@ -24,6 +25,7 @@ app.set('views', './views');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use('/blog', blog.router);
+app.use('/admin', admin.router);
 
 // Set non-blog routes
 app.get('/', (req, res) => {

@@ -10,34 +10,6 @@ router.get('/', async (req, res) => {
 	res.render('blog/list', { title: 'Blog', posts: posts });
 });
 
-router.post('/new', async (req, res) => {
-	let post = new Post({
-		title: req.body.title,
-		author: req.body.author,
-		slug: req.body.slug,
-		description: req.body.description,
-		article: req.body.article
-	});
-
-	try {
-		post.isPublished = true;
-		post = await post.save();
-		res.redirect(`/blog/${post.id}`);
-	}
-	catch (error) {
-		console.log(error);
-		res.render('blog/new', { title: 'Write New Post', post: post });
-	}
-});
-
-router.get('/new', (req, res) => {
-	res.render('blog/new', { title: 'Write New Post', post: new Post() });
-});
-
-router.get('/:id/edit', (req, res) => {
-	res.render('blog/edit');
-});
-
 router.get('/:slug', async (req, res) => {
 	const slug = req.params.slug;
 	
