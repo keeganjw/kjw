@@ -1,6 +1,6 @@
 // Import required packages and files
 const express = require('express');
-const handlebars = require('express-handlebars');
+const hbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const blog = require('./blog');
 const admin = require('./admin');
@@ -15,10 +15,11 @@ mongoose.connect(secrets.connectionString)
 .catch((error) => console.error(error));
 
 // Set view engine
-app.engine('handlebars', handlebars.engine({
+app.engine('hbs', hbs.engine({
+	extname: 'hbs',
 	layoutsDir: __dirname + '/views/layouts'
 }));
-app.set('view engine', 'handlebars');
+app.set('view engine', 'hbs');
 app.set('views', './views');
 
 // Configure middleware
