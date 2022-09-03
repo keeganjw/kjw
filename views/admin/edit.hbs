@@ -1,7 +1,7 @@
 <h1>Edit Post</h1>
 
 <form action="/admin/edit/{{post.slug}}" method="post">
-	{{> post-form-fields }}
+	{{> prt-post-form-fields }}
 
 	<div>
 		<input type="checkbox" name="isPublished" {{#if post.isPublished}}checked{{/if}}> Is Published

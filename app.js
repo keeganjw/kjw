@@ -1,10 +1,19 @@
 // Import required packages and files
 const express = require('express');
-const handlebars = require('express-handlebars');
+const hbs = require('express-handlebars');
 const mongoose = require('mongoose');
+const passport = require('passport');
+const flash = require('express-flash');
+const session = require('express-session');
+const LocalStrategy = require('passport-local');
+const auth = require('./auth');
 const blog = require('./blog');
 const admin = require('./admin');
 const secrets = require('./secrets/secrets');
+
+if (process.env.NODE_ENV !== 'production') {
+	require('dotenv').config();
+}
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -15,17 +24,44 @@ mongoose.connect(secrets.connectionString)
 .catch((error) => console.error(error));
 
 // Set view engine
-app.engine('handlebars', handlebars.engine({
+app.engine('hbs', hbs.engine({
+	extname: 'hbs',
+	defaultLayout: 'ly-main',
 	layoutsDir: __dirname + '/views/layouts'
 }));
-app.set('view engine', 'handlebars');
+app.set('view engine', 'hbs');
 app.set('views', './views');
 
 // Configure middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(flash());
+app.use(session({
+	secret: process.env.SESSION_SECRET,
+	resave: false,
+	saveUninitialized: false
+}));
+
+// Configure passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy({
+	usernameField: 'email',
+	passwordField: 'password',
+	session: true
+}, auth.authenticateUser));
+
+passport.serializeUser((user, done) => {
+	done(null, user);
+});
+
+passport.deserializeUser((user, done) => {
+	done(null, user);
+});
+
 app.use('/blog', blog.router);
-app.use('/admin', admin.router);
+app.use('/admin', auth.allowIfAuthenticated, admin.router);
 
 // Set non-blog routes
 app.get('/', (req, res) => {
@@ -33,6 +69,49 @@ app.get('/', (req, res) => {
 });
 app.get('/projects', (req, res) => {
 	res.render('projects', { title: 'About' });
+});
+
+app.get('/login', (req, res) => {
+	res.render('login', { title: 'Login' });
+});
+
+app.post('/login', auth.allowIfNotAuthenticated, passport.authenticate('local', {
+	successRedirect: '/admin',
+	failureRedirect: '/login',
+	failureFlash: true
+}));
+
+app.get('/logout', auth.allowIfAuthenticated, (req, res, next) => {
+	req.logout((error) => {
+		if (error) {
+			return next(error);
+		}
+
+		res.redirect('/');
+	});
+});
+
+app.get('/add-user', (req, res) => {
+	res.render('add-user', { title: 'Login' });
+});
+
+app.post('/add-user', auth.allowIfNotAuthenticated, async (req, res) => {
+	try {
+		await auth.addUser({
+			name: req.body.name,
+			email: req.body.email,
+			password: req.body.password
+		});
+
+		res.redirect('/login');
+	}
+	catch {
+		res.redirect('/add-user');
+	}
+});
+
+app.get('/blocked', (req, res) => {
+	res.send('blocked');
 });
 
 // Listen for HTTP requests at specified port number

@@ -5,14 +5,18 @@ const Post = require('./models/post');
 
 const markdown = new showdown.Converter();
 
+router.get('/', async (req, res) => {
+	res.render('admin/index', { layout: 'ly-admin', title: 'Dashboard' });
+});
+
 router.get('/published', async (req, res) => {
 	const posts = await Post.find({ isPublished: true }).lean();
-	res.render('admin/list', { title: 'Published Posts', posts: posts });
+	res.render('admin/list', { layout: 'ly-admin', title: 'Published Posts', posts: posts });
 });
 
 router.get('/drafts', async (req, res) => {
 	const posts = await Post.find({ isPublished: false }).lean();
-	res.render('admin/list', { title: 'Drafts', posts: posts });
+	res.render('admin/list', { layout: 'ly-admin', title: 'Drafts', posts: posts });
 });
 
 router.post('/new', async (req, res) => {
@@ -37,12 +41,12 @@ router.post('/new', async (req, res) => {
 	}
 	catch (error) {
 		console.log(error);
-		res.render('admin/new', { title: 'Write New Post', post: post });
+		res.render('admin/new', { layout: 'ly-admin', title: 'Write New Post', post: post });
 	}
 });
 
 router.get('/new', (req, res) => {
-	res.render('admin/new', { title: 'Write New Post', post: new Post() });
+	res.render('admin/new', { layout: 'ly-admin', title: 'Write New Post', post: new Post() });
 });
 
 router.get('/edit/:slug', async (req, res) => {
@@ -50,7 +54,7 @@ router.get('/edit/:slug', async (req, res) => {
 
 	try {
 		let post = await Post.findOne({ slug: slug }).lean();
-		res.render('admin/edit', { title: post.title, post: post });
+		res.render('admin/edit', { layout: 'ly-admin', title: post.title, post: post });
 	}
 	catch (error) {
 		res.send('Blog post not found for editing.');
@@ -85,7 +89,7 @@ router.get('/preview/:slug', async (req, res) => {
 		let post = await Post.findOne({ slug: slug }).lean();
 		post.article = markdown.makeHtml(post.article);
 		post.dateCreated = new Date(post.dateCreated).toDateString();
-		res.render('admin/preview', { title: post.title, post: post });
+		res.render('admin/preview', { layout: 'ly-admin', title: post.title, post: post });
 	}
 	catch (error) {
 		res.send('Blog post not found.');
