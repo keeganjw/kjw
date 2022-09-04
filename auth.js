@@ -1,27 +1,14 @@
 const bcrypt = require('bcrypt');
-const mongoose = require('mongoose');
-
-let users = [];
-
-async function addUser(newUser) {
-	const hashedPassword = await bcrypt.hash(newUser.password, 10);
-
-	users.push({
-		id: Date.now().toString(),
-		name: newUser.name,
-		email: newUser.email,
-		password: hashedPassword
-	});
-}
+const User = require('./models/user');
 
 async function authenticateUser(email, password, done) {
 	// Search for user in user array
-	const user = users.find((user) => user.email === email);
+	const user = await User.findOne({ email: email }).lean();
 	const failedLoginMessage = 'Email or password is incorrect.';
 
 	// If user doesn't exist, return failed login message
 	if (!user) {
-		return done(null, false, failedLoginMessage);
+		return done(null, false, 'User not found.');
 	}
 	else {
 		// Check if passwords match
@@ -33,7 +20,7 @@ async function authenticateUser(email, password, done) {
 		}
 		// If password doesn't match, return failed login message
 		else {
-			return done(null, false, failedLoginMessage);
+			return done(null, false, 'Password incorrect.');
 		}
 	}
 }
@@ -43,11 +30,11 @@ function allowIfAuthenticated(req, res, next) {
 		return next();
 	}
 	else {
-		res.redirect('/blocked');
+		res.sendStatus(404);
 	}
 }
 
-function allowIfNotAuthenticated(req, res, next) {
+function disallowIfAuthenticated(req, res, next) {
 	if (!req.isAuthenticated()) {
 		return next();
 	}
@@ -57,8 +44,7 @@ function allowIfNotAuthenticated(req, res, next) {
 }
 
 module.exports = {
-	addUser,
 	authenticateUser,
 	allowIfAuthenticated,
-	allowIfNotAuthenticated
+	disallowIfAuthenticated
 }

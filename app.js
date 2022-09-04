@@ -10,6 +10,7 @@ const auth = require('./auth');
 const blog = require('./blog');
 const admin = require('./admin');
 const secrets = require('./secrets/secrets');
+const User = require('./models/user');
 
 if (process.env.NODE_ENV !== 'production') {
 	require('dotenv').config();
@@ -23,10 +24,10 @@ mongoose.connect(secrets.connectionString)
 .then((result) => console.log('Connected to the MongoDB database.'))
 .catch((error) => console.error(error));
 
-// Set view engine
+// Setup handlebars
 app.engine('hbs', hbs.engine({
 	extname: 'hbs',
-	defaultLayout: 'ly-main',
+	defaultLayout: 'layout-main',
 	layoutsDir: __dirname + '/views/layouts'
 }));
 app.set('view engine', 'hbs');
@@ -60,10 +61,11 @@ passport.deserializeUser((user, done) => {
 	done(null, user);
 });
 
+// Set routes from other files
 app.use('/blog', blog.router);
 app.use('/admin', auth.allowIfAuthenticated, admin.router);
 
-// Set non-blog routes
+// Set remaining routes
 app.get('/', (req, res) => {
 	res.render('index', { title: 'Home' });
 });
@@ -75,7 +77,7 @@ app.get('/login', (req, res) => {
 	res.render('login', { title: 'Login' });
 });
 
-app.post('/login', auth.allowIfNotAuthenticated, passport.authenticate('local', {
+app.post('/login', auth.disallowIfAuthenticated, passport.authenticate('local', {
 	successRedirect: '/admin',
 	failureRedirect: '/login',
 	failureFlash: true
@@ -89,25 +91,6 @@ app.get('/logout', auth.allowIfAuthenticated, (req, res, next) => {
 
 		res.redirect('/');
 	});
-});
-
-app.get('/add-user', (req, res) => {
-	res.render('add-user', { title: 'Login' });
-});
-
-app.post('/add-user', auth.allowIfNotAuthenticated, async (req, res) => {
-	try {
-		await auth.addUser({
-			name: req.body.name,
-			email: req.body.email,
-			password: req.body.password
-		});
-
-		res.redirect('/login');
-	}
-	catch {
-		res.redirect('/add-user');
-	}
 });
 
 app.get('/blocked', (req, res) => {

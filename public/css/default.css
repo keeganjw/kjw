@@ -15,17 +15,25 @@ body {
 	padding: 1rem;
 }
 
-form div {
-	padding-bottom: 1rem;
+button {
+	padding: 5px;
 }
 
-form input[type=text]{
-	width: 60%;
+form div {
+	padding-bottom: 1rem;
 }
 
 form textarea {
 	resize: vertical;
 	width: 100%;
+}
+
+#add-user input[type=text],
+#add-user input[type=email],
+#add-user input[type=password] {
+	display: block;
+	margin-bottom: .75rem;
+	width: 12rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
