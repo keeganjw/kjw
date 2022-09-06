@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const showdown = require('showdown');
-const Post = require('./models/post');
+const Post = require('../models/post');
 
 const markdown = new showdown.Converter();
 

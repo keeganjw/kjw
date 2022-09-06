@@ -7,8 +7,8 @@ const flash = require('express-flash');
 const session = require('express-session');
 const LocalStrategy = require('passport-local');
 const auth = require('./auth');
-const blog = require('./blog');
-const admin = require('./admin');
+const blog = require('./routes/blog');
+const admin = require('./routes/admin');
 const secrets = require('./secrets/secrets');
 const User = require('./models/user');
 

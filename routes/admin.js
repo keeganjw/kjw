@@ -2,8 +2,8 @@ const bcrypt = require('bcrypt');
 const express = require('express');
 const fileupload = require('express-fileupload');
 const showdown = require('showdown');
-const Post = require('./models/post');
-const User = require('./models/user');
+const Post = require('../models/post');
+const User = require('../models/user');
 
 const router = express.Router();
 const markdown = new showdown.Converter();
