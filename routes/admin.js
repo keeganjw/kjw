@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const express = require('express');
-const fileupload = require('express-fileupload');
+const fs = require('fs/promises');
 const showdown = require('showdown');
 const Post = require('../models/post');
 const User = require('../models/user');
@@ -28,12 +28,6 @@ router.get('/new', (req, res) => {
 
 router.post('/new', async (req, res) => {
 	try {
-		if(req.files.images) {
-			let images = req.files.images;
-			// Give each image a randomly generated 11-digit alpha-numeric name
-			images.forEach((image) => image.name = Math.random().toString(36).slice(2));
-		}
-
 		let post = new Post({
 			title: req.body.title,
 			author: req.user.name,
@@ -130,6 +124,35 @@ router.post('/add-user', async (req, res) => {
 	catch(error) {
 		console.log(error);
 		res.redirect('/admin/add-user');
+	}
+});
+
+router.get('/blog-images', async (req, res) => {
+	const images = await fs.readdir('./public/images/uploads');
+	res.render('admin/blog-images', { layout: 'layout-admin', images: images, title: 'Upload and Select Blog Images' });
+});
+
+router.post('/blog-images', (req, res) => {
+	try {
+		// If there's an image to upload, try to uploading it to /public/images/uploads
+		if (req.files.image) {
+			const image = req.files.image;
+
+			image.mv('./public/images/uploads/' + image.name, (error) => {
+				if(error) {
+					res.send('Upload failed when moving: ' + error);
+				}
+				else {
+					res.send('Upload succeeded');
+				}
+			});
+		}
+		else {
+			res.send('No image uploaded');
+		}
+	}
+	catch(error) {
+		res.send('Upload failed: ' + error);
 	}
 });
 

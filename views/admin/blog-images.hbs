@@ -1,0 +1,19 @@
+<div>
+	<form action="/admin/blog-images" method="post" enctype="multipart/form-data">
+		<label for="images">Upload Images</label>
+		<input type="file" name="image" id="image" accept="image/*">
+
+		<br><br>
+
+		<button type="submit">Upload</button>
+	</form>
+</div>
+
+<h2>Available Images</h2>
+
+{{#each images}}
+	<img src="/images/uploads/{{this}}" width="200px" alt="">
+	<div>
+		https://kjw.dev/images/uploads/{{this}}
+	</div>
+{{/each}}

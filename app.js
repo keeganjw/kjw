@@ -1,17 +1,18 @@
-// Import required packages and files
 const express = require('express');
+const fileUpload = require('express-fileupload');
+const flash = require('express-flash');
 const hbs = require('express-handlebars');
+const session = require('express-session');
 const mongoose = require('mongoose');
 const passport = require('passport');
-const flash = require('express-flash');
-const session = require('express-session');
 const LocalStrategy = require('passport-local');
 const auth = require('./auth');
-const blog = require('./routes/blog');
 const admin = require('./routes/admin');
+const blog = require('./routes/blog');
 const secrets = require('./secrets/secrets');
 const User = require('./models/user');
 
+// Require .env file if not in production
 if (process.env.NODE_ENV !== 'production') {
 	require('dotenv').config();
 }
@@ -36,6 +37,7 @@ app.set('views', './views');
 // Configure middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(fileUpload());
 app.use(flash());
 app.use(session({
 	secret: process.env.SESSION_SECRET,
