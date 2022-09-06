@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const express = require('express');
+const fileupload = require('express-fileupload');
 const showdown = require('showdown');
 const Post = require('./models/post');
 const User = require('./models/user');
@@ -21,11 +22,21 @@ router.get('/drafts', async (req, res) => {
 	res.render('admin/list', { layout: 'layout-admin', title: 'Drafts', posts: posts });
 });
 
+router.get('/new', (req, res) => {
+	res.render('admin/new', { layout: 'layout-admin', title: 'Write New Post', post: new Post() });
+});
+
 router.post('/new', async (req, res) => {
 	try {
+		if(req.files.images) {
+			let images = req.files.images;
+			// Give each image a randomly generated 11-digit alpha-numeric name
+			images.forEach((image) => image.name = Math.random().toString(36).slice(2));
+		}
+
 		let post = new Post({
 			title: req.body.title,
-			author: req.body.author,
+			author: req.user.name,
 			slug: req.body.slug,
 			description: req.body.description,
 			article: req.body.article
@@ -47,10 +58,6 @@ router.post('/new', async (req, res) => {
 	}
 });
 
-router.get('/new', (req, res) => {
-	res.render('admin/new', { layout: 'layout-admin', title: 'Write New Post', post: new Post() });
-});
-
 router.get('/edit/:slug', async (req, res) => {
 	const slug = req.params.slug;
 
@@ -67,7 +74,7 @@ router.post('/edit/:slug', async (req, res) => {
 	const slug = req.params.slug;
 	let update = {
 		title: req.body.title,
-		author: req.body.author,
+		author: req.user.name,
 		slug: req.body.slug,
 		description: req.body.description,
 		article: req.body.article
@@ -103,6 +110,10 @@ router.get('/add-user', (req, res) => {
 });
 
 router.post('/add-user', async (req, res) => {
+	if(req.body.password !== req.body.confirmPassword) {
+		res.redirect('/admin/add-user');
+	}
+
 	try {
 		const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
