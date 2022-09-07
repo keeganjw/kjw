@@ -56,7 +56,9 @@ router.get('/edit/:slug', async (req, res) => {
 	const slug = req.params.slug;
 
 	try {
-		let post = await Post.findOne({ slug: slug }).lean();
+		const post = await Post.findOne({ slug: slug }).lean();
+		// TEST, REMOVE LATER
+		await fs.writeFile('./public/edit.txt', post.article);
 		res.render('admin/edit', { layout: 'layout-admin', title: post.title, post: post });
 	}
 	catch (error) {
@@ -104,11 +106,14 @@ router.get('/add-user', (req, res) => {
 });
 
 router.post('/add-user', async (req, res) => {
+	// If passwords entered do not match, return to add user page
 	if(req.body.password !== req.body.confirmPassword) {
 		res.redirect('/admin/add-user');
 	}
 
 	try {
+		// Hash password, create new user schema object,
+		// save to DB, and then redirect to login page
 		const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
 		let user = new User({
@@ -128,7 +133,11 @@ router.post('/add-user', async (req, res) => {
 });
 
 router.get('/blog-images', async (req, res) => {
-	const images = await fs.readdir('./public/images/uploads');
+	// Get file names of all files in public/images/uploads
+	// Then set each string as the full encoded URI path to the image
+	let images = await fs.readdir('./public/images/uploads');
+	images.forEach((item, index, images) => images[index] = encodeURI('/images/uploads/' + item));
+
 	res.render('admin/blog-images', { layout: 'layout-admin', images: images, title: 'Upload and Select Blog Images' });
 });
 
@@ -138,15 +147,19 @@ router.post('/blog-images', (req, res) => {
 		if (req.files.image) {
 			const image = req.files.image;
 
+			// Move uploaded image to ./public/images/uploads folder
 			image.mv('./public/images/uploads/' + image.name, (error) => {
 				if(error) {
+					// Upload failed
 					res.send('Upload failed when moving: ' + error);
 				}
 				else {
-					res.send('Upload succeeded');
+					// Upload succeeded
+					res.redirect('/admin/blog-images');
 				}
 			});
 		}
+		// User clicked submit without uploading an image
 		else {
 			res.send('No image uploaded');
 		}
