@@ -7,12 +7,9 @@ body {
 	background: rgb(2, 0, 32);
 	background: linear-gradient(180deg, rgba(2, 0, 32, 1) 0%, rgba(11, 11, 79, 1) 50%, rgba(6, 42, 85, 1) 100%) fixed;
 	background-repeat: no-repeat;
-	color: white;
+	color: #fff;
 	font-family: 'Nunito', sans-serif;
 	font-size: 1.2rem;
-	margin: 1rem auto;
-	max-width: 900px;
-	padding: 1rem;
 }
 
 button {
@@ -28,13 +25,6 @@ form textarea {
 	width: 100%;
 }
 
-#add-user input[type=text],
-#add-user input[type=email],
-#add-user input[type=password] {
-	display: block;
-	margin-bottom: .75rem;
-	width: 12rem;
-}
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 900;
@@ -50,6 +40,22 @@ label {
 	display: block;
 }
 
+nav a, nav a:active, nav a:hover, nav a:visited {
+	color: #fff;
+	padding-bottom: .2rem;
+	text-decoration: none;
+}
+
+nav ul {
+	display: flex;
+	list-style: none;
+	margin: 2rem 0rem 1.3rem 0rem;
+	padding: 0rem;
+}
+	nav ul li {
+		padding-right: 1rem;
+	}
+
 p {
 	line-height: 1.6rem;
 }
@@ -59,4 +65,68 @@ textarea {
 	font-family: 'Nunito', sans-serif;
 	height: 50rem;
 	padding: 1rem;
+}
+
+/* Classes */
+
+.center {
+	text-align: center;
+}
+
+.flexbox {
+	display: flex;
+}
+
+.underscore {
+	color: #fff !important;
+	display: inline-block;
+	position: relative;
+}
+
+.underscore:hover {
+	color: #fff;
+}
+
+.underscore:after {
+	background-color: #fff;
+	content: '';
+	position: absolute;
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	transform: scaleX(0);
+	transform-origin: bottom left;
+	transition: transform 0.3s ease-out;
+	width: 100%;
+}
+
+.underscore:hover:after {
+	transform: scaleX(1);
+	transform-origin: bottom left;
+}
+
+/* IDs */
+
+#add-user input[type=text],
+#add-user input[type=email],
+#add-user input[type=password] {
+	display: block;
+	margin-bottom: .75rem;
+	width: 12rem;
+}
+
+#header-name {
+	font-size: 2.4rem;
+	font-weight: 900;
+}
+
+#logo-image {
+	position: relative;
+	height: 2rem;
+	top: -3px;
+}
+
+#main-column {
+	margin: 2rem auto;
+	max-width: 900px;
 }

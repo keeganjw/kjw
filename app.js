@@ -69,10 +69,10 @@ app.use('/admin', auth.allowIfAuthenticated, admin.router);
 
 // Set remaining routes
 app.get('/', (req, res) => {
-	res.render('index', { title: 'Home' });
+	res.render('index', { title: 'Keegan Woodward' });
 });
 app.get('/projects', (req, res) => {
-	res.render('projects', { title: 'About' });
+	res.render('projects', { title: 'Projects' });
 });
 
 app.get('/login', (req, res) => {

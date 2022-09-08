@@ -6,7 +6,8 @@ const Post = require('../models/post');
 const markdown = new showdown.Converter();
 
 router.get('/', async (req, res) => {
-	const posts = await Post.find({ isPublished: true }).lean();
+	let posts = await Post.find({ isPublished: true }).lean();
+	posts.forEach((item, index, posts) => posts[index].dateCreated = new Date(item.dateCreated).toDateString());
 	res.render('blog/list', { title: 'Blog', posts: posts });
 });
 
