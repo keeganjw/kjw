@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const dayjs = require('dayjs');
 const express = require('express');
 const fs = require('fs/promises');
 const showdown = require('showdown');
@@ -93,7 +94,7 @@ router.get('/preview/:slug', async (req, res) => {
 	try {
 		let post = await Post.findOne({ slug: slug }).lean();
 		post.article = markdown.makeHtml(post.article);
-		post.dateCreated = new Date(post.dateCreated).toDateString();
+		post.dateCreated = dayjs(post.dateCreated).format('MMMM D, YYYY');
 		res.render('admin/preview', { layout: 'layout-admin', title: post.title, post: post });
 	}
 	catch (error) {

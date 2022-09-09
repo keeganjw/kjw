@@ -1,12 +1,19 @@
-a, a:visited {
-	color: #a7bdf3;
-	/* color: #f9b9b4; */
+:root {
+	--dark-text: #222;
+	--light-bg: #F0F6FE;
+}
+
+a, a:hover, a:visited {
+	/* color: #BFDCF6; */
+	color: #8CB9FF;
+}
+
+a:active {
+	color: #A7C9FF;
 }
 
 body {
-	background: rgb(2, 0, 32);
-	background: linear-gradient(180deg, rgba(2, 0, 32, 1) 0%, rgba(11, 11, 79, 1) 50%, rgba(6, 42, 85, 1) 100%) fixed;
-	background-repeat: no-repeat;
+	background: rgba(6, 42, 85, 1);
 	color: #fff;
 	font-family: 'Nunito', sans-serif;
 	font-size: 1.2rem;
@@ -14,6 +21,10 @@ body {
 
 button {
 	padding: 5px;
+}
+
+footer {
+	margin: 4rem 0rem 2rem 0rem;
 }
 
 form div {
@@ -24,7 +35,6 @@ form textarea {
 	resize: vertical;
 	width: 100%;
 }
-
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 900;
@@ -41,19 +51,21 @@ label {
 }
 
 nav a, nav a:active, nav a:hover, nav a:visited {
-	color: #fff;
+	color: var(--dark-text);
 	padding-bottom: .2rem;
 	text-decoration: none;
 }
 
 nav ul {
+	background-color: var(--light-bg);
+	border-radius: .5rem;
 	display: flex;
 	list-style: none;
 	margin: 2rem 0rem 1.3rem 0rem;
-	padding: 0rem;
+	padding: 1rem 1.5rem .8rem 1.5rem;
 }
 	nav ul li {
-		padding-right: 1rem;
+		padding-right: 1.5rem;
 	}
 
 p {
@@ -69,26 +81,35 @@ textarea {
 
 /* Classes */
 
-.center {
-	text-align: center;
-}
-
 .flexbox {
 	display: flex;
 }
 
+.lightbox {
+	background-color: var(--light-bg);
+	border-radius: 10px;
+	color: var(--dark-text);
+	padding: 1.5rem 1rem;
+	text-align: center;
+}
+
+.subbox {
+	text-align: center;
+	width: 33%;
+}
+
 .underscore {
-	color: #fff !important;
+	color: var(--dark-text) !important;
 	display: inline-block;
 	position: relative;
 }
 
 .underscore:hover {
-	color: #fff;
+	color: var(--dark-text);
 }
 
 .underscore:after {
-	background-color: #fff;
+	background-color: var(--dark-text);
 	content: '';
 	position: absolute;
 	height: 2px;
@@ -115,6 +136,14 @@ textarea {
 	width: 12rem;
 }
 
+#background{
+	background: rgb(2, 0, 32);
+	background: linear-gradient(180deg, rgba(2, 0, 32, 1) 0%, rgba(11, 11, 79, 1) 50%, rgba(6, 42, 85, 1) 100%);
+	background-repeat: no-repeat;
+	height: 90vh;
+	width: 100%;
+}
+
 #header-name {
 	font-size: 2.4rem;
 	font-weight: 900;
@@ -127,6 +156,11 @@ textarea {
 }
 
 #main-column {
+	background: rgba(0, 0, 0, 0.0);
 	margin: 2rem auto;
-	max-width: 900px;
+	width: 900px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, 0%);
 }

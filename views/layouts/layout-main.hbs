@@ -27,6 +27,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;900&display=swap" rel="stylesheet">
 
 	<!-- Site CSS -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/default.css">
 
 	<!-- All icons purchased from flaticon.com -->
@@ -34,12 +35,14 @@
 </head>
 
 <body>
+	<div id="background"> </div>
+
 	<div id="main-column">
 		<header>
 			{{!-- <img id="logo-image" src="images/icons/cmd.png" alt="Icon of a command prompt terminal."> --}}
 			<span id="header-name">Keegan Woodward</span>
 		</header>
-
+	
 		<nav>
 			<ul>
 				<li><a class="underscore" href="/">Home</a></li>
@@ -52,10 +55,14 @@
 				<li><a class="underscore" href="/login">Login</a></li>
 			</ul>
 		</nav>
-
+	
 		<main>
 			{{{body}}}
 		</main>
+	
+		<footer>
+			© 2022 by Keegan Woodward
+		</footer>
 	</div>
 </body>
 </html>
