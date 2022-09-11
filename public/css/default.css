@@ -1,6 +1,7 @@
 :root {
 	--dark-text: #222;
 	--light-bg: #F0F6FE;
+	--radius: .3rem;
 }
 
 a, a:hover, a:visited {
@@ -20,7 +21,7 @@ body {
 }
 
 button {
-	padding: 5px;
+	padding: 8px;
 }
 
 footer {
@@ -56,17 +57,19 @@ nav a, nav a:active, nav a:hover, nav a:visited {
 	text-decoration: none;
 }
 
-nav ul {
-	background-color: var(--light-bg);
-	border-radius: .5rem;
-	display: flex;
-	list-style: none;
-	margin: 2rem 0rem 1.3rem 0rem;
-	padding: 1rem 1.5rem .8rem 1.5rem;
+nav {
+	margin: 1.5rem 0rem 2.5rem 0rem;
 }
-	nav ul li {
-		padding-right: 1.5rem;
+	nav ul {
+		background-color: var(--light-bg);
+		border-radius: var(--radius);
+		display: flex;
+		list-style: none;
+		padding: 1rem 1.5rem .8rem 1.5rem;
 	}
+		nav ul li {
+			padding-right: 1.5rem;
+		}
 
 p {
 	line-height: 1.6rem;
@@ -87,7 +90,7 @@ textarea {
 
 .lightbox {
 	background-color: var(--light-bg);
-	border-radius: 10px;
+	border-radius: var(--radius);
 	color: var(--dark-text);
 	padding: 1.5rem 1rem;
 	text-align: center;
@@ -96,6 +99,10 @@ textarea {
 .subbox {
 	text-align: center;
 	width: 33%;
+}
+
+.radius {
+	border-radius: var(--radius);
 }
 
 .underscore {
@@ -128,14 +135,6 @@ textarea {
 
 /* IDs */
 
-#add-user input[type=text],
-#add-user input[type=email],
-#add-user input[type=password] {
-	display: block;
-	margin-bottom: .75rem;
-	width: 12rem;
-}
-
 #background{
 	background: rgb(2, 0, 32);
 	background: linear-gradient(180deg, rgba(2, 0, 32, 1) 0%, rgba(11, 11, 79, 1) 50%, rgba(6, 42, 85, 1) 100%);
@@ -144,8 +143,12 @@ textarea {
 	width: 100%;
 }
 
+#button-row {
+	margin: 2rem 0rem 1rem 0rem;
+}
+
 #header-name {
-	font-size: 2.4rem;
+	font-size: 2.8rem;
 	font-weight: 900;
 }
 

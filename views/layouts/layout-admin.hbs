@@ -13,25 +13,37 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;900&display=swap" rel="stylesheet">
 
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/default.css">
+	<link rel="stylesheet" type="text/css" href="/css/forms.css">
 
 	<!-- All icons purchased from flaticon.com -->
 	<link rel="icon" type="image/x-icon" href="/images/icons/cmd.png">
 </head>
 
 <body>
-	<h1>Admin</h1>
-	<nav>
-		<ul>
-			<li><a href="/admin">Dashboard</a></li>
-			<li><a href="/admin/new">New Post</a></li>
-			<li><a href="/admin/published">Published</a></li>
-			<li><a href="/admin/drafts">Drafts</a></li>
-			<li><a href="/admin/add-user">Add User</a></li>
-			<li><a href="/logout">Logout</a></li>
-		</ul>
-	</nav>
+	<div id="background"></div>
 
-	{{{body}}}
+	<div id="main-column">
+		<header>
+			{{!-- <img id="logo-image" src="images/icons/cmd.png" alt="Icon of a command prompt terminal."> --}}
+			<span id="header-name">Blog Admin</span>
+		</header>
+
+		<nav>
+			<ul>
+				<li><a href="/admin">Dashboard</a></li>
+				<li><a href="/admin/new">New Post</a></li>
+				<li><a href="/admin/published">Published</a></li>
+				<li><a href="/admin/drafts">Drafts</a></li>
+				<li><a href="/admin/add-user">Add User</a></li>
+				<li><a href="/logout">Logout</a></li>
+			</ul>
+		</nav>
+		
+		<main>
+			{{{body}}}
+		</main>
+	</div>
 </body>
 </html>

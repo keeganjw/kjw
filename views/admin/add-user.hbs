@@ -1,10 +1,19 @@
 <h1>Add User</h1>
 
 <form id="add-user" action="/admin/add-user" method="post">
-	Name: <input type="text" name="name" id="name">
-	Email: <input type="email" name="email" id="email" required>
-	Password: <input type="password" name="password" id="password" required>
-	Confirm Password: <input type="password" name="confirmPassword" id="confirm-password" required><br>
+	<label for="name">Name:</label>
+	<input type="text" name="name" id="name">
 
-	<button type="submit">Add User</button>
+	<label for="email">Email:</label>
+	<input type="email" name="email" id="email" required>
+	
+	<label for="password">Password:</label>
+	<input type="password" name="password" id="password" required>
+	
+	<label for="confirmPassword">Confirm Password:</label>
+	<input type="password" name="confirmPassword" id="confirm-password" required><br>
+
+	<div id="button-row">
+		<button type="submit">Add User</button>
+	</div>
 </form>

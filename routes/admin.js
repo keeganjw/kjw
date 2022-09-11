@@ -54,12 +54,10 @@ router.post('/new', async (req, res) => {
 });
 
 router.get('/edit/:slug', async (req, res) => {
-	const slug = req.params.slug;
-
 	try {
-		const post = await Post.findOne({ slug: slug }).lean();
+		const post = await Post.findOne({ slug: req.params.slug }).lean();
 		// TEST, REMOVE LATER
-		await fs.writeFile('./public/edit.txt', post.article);
+		//await fs.writeFile('./public/edit.txt', post.article);
 		res.render('admin/edit', { layout: 'layout-admin', title: post.title, post: post });
 	}
 	catch (error) {
