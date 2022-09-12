@@ -1,4 +1,5 @@
 form input[type=text] {
+	padding: 4px;
 	width: 66%;
 }
 
@@ -6,11 +7,19 @@ form label {
 	display: block;
 }
 
-/* IDs */
+textarea {
+	font-family: monospace;
+	padding: 8px;
+}
+
+/***********
+	IDs    *
+************/
 
 #add-user input[type=text],
 #add-user input[type=email],
 #add-user input[type=password] {
 	margin-bottom: .75rem;
+	padding: 4px;
 	width: 20rem;
 }

@@ -1,24 +1,33 @@
+/*************************
+	Style for kjw.dev    *
+**************************/
+
 :root {
 	--dark-text: #222;
 	--light-bg: #F0F6FE;
-	--light-hover: #d8e9ff;
+	--light-hover: #D8E9FF;
 	--radius: .3rem;
 }
 
+::selection {
+	color: #FFF;
+	background-color: #4773C0;
+}
+
 a, a:hover, a:visited {
-	/* color: #BFDCF6; */
-	color: #8CB9FF;
+	color: #BAD3FC;
 }
 
 a:active {
-	color: #A7C9FF;
+	color: #C9DCFD;
 }
 
 body {
 	background: rgba(6, 42, 85, 1);
-	color: #fff;
+	color: #FFF;
 	font-family: 'Nunito', sans-serif;
 	font-size: 1.2rem;
+	z-index: -2;
 }
 
 button {
@@ -46,6 +55,10 @@ hr {
 	background-color: white;
 	border: 0px;
 	height: 1px;
+}
+
+img {
+	width: 100%;
 }
 
 label {
@@ -87,14 +100,14 @@ textarea {
 	padding: 1rem;
 }
 
-/* Classes */
+
+/***************
+	Classes    *
+****************/
 
 .blog-list-item {
-	margin-bottom: 2rem;
+	margin-bottom: 4rem;
 }
-	.blog-list-item hr {
-		margin-top: 2rem;
-	}
 
 .flexbox {
 	display: flex;
@@ -105,16 +118,29 @@ textarea {
 	border-radius: var(--radius);
 	color: var(--dark-text);
 	padding: 1.5rem 1rem;
-	text-align: center;
+}
+
+	.lightbox img {
+		height: 80px;
+		width: auto;
+	}
+
+.post-description {
+	margin: .5rem 0rem 1rem 0rem;
+}
+
+.post-title {
+	font-size: 1.8rem;
+	font-weight: bold;
+}
+
+.radius {
+	border-radius: var(--radius);
 }
 
 .subbox {
 	text-align: center;
 	width: 33%;
-}
-
-.radius {
-	border-radius: var(--radius);
 }
 
 .underscore {
@@ -146,14 +172,21 @@ textarea {
 	transform-origin: bottom left;
 }
 
-/* IDs */
 
-#background{
+/***********
+	IDs    *
+************/
+
+#background {
 	background: rgb(2, 0, 32);
 	background: linear-gradient(180deg, rgba(2, 0, 32, 1) 0%, rgba(11, 11, 79, 1) 50%, rgba(6, 42, 85, 1) 100%);
 	background-repeat: no-repeat;
+	position: absolute;
+	top: 0;
+	left: 0;
 	height: 90vh;
 	width: 100%;
+	z-index: -1;
 }
 
 #button-row {
@@ -163,6 +196,11 @@ textarea {
 #header-name {
 	font-size: 2.8rem;
 	font-weight: 900;
+}
+
+#login input {
+	padding: 4px;
+	width: 22rem;
 }
 
 #logo-image {
@@ -176,9 +214,45 @@ textarea {
 	box-sizing: border-box;
 	margin: 2rem auto;
 	padding: 0rem 1rem;
-	position: absolute;
-	top: 0;
-	left: 50%;
-	transform: translate(-50%, 0%);
-	width: 920px;
+	max-width: 920px;
+	z-index: 0;
+}
+
+
+/*********************
+	Media Queries    *
+**********************/
+
+@media screen and (max-width: 800px) {
+	nav {
+		margin: 1.5rem 2rem 2.5rem 2rem;
+	}
+		nav ul {
+			display: block;
+		}
+			nav ul li {
+				display: block;
+				text-align: center;
+			}
+
+	.flexbox {
+		display: block;
+	}
+
+	.lightbox {
+		background-color: inherit;
+		border-radius: inherit;
+		color: inherit;
+		padding: inherit;
+	}
+
+	.subbox {
+		background-color: var(--light-bg);
+		border-radius: var(--radius);
+		box-sizing: border-box;
+		color: var(--dark-text);
+		margin-bottom: 1rem;
+		padding: 1.5rem 1rem;
+		width: 100%;
+	}
 }
