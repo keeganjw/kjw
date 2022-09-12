@@ -1,6 +1,7 @@
 :root {
 	--dark-text: #222;
 	--light-bg: #F0F6FE;
+	--light-hover: #d8e9ff;
 	--radius: .3rem;
 }
 
@@ -65,11 +66,15 @@ nav {
 		border-radius: var(--radius);
 		display: flex;
 		list-style: none;
-		padding: 1rem 1.5rem .8rem 1.5rem;
+		padding: 0rem 1rem;
 	}
 		nav ul li {
-			padding-right: 1.5rem;
+			/* border-radius: var(--radius); */
+			padding: 1rem 1rem;
 		}
+			nav ul li:hover {
+				background-color: var(--light-hover);
+			}
 
 p {
 	line-height: 1.6rem;
@@ -83,6 +88,13 @@ textarea {
 }
 
 /* Classes */
+
+.blog-list-item {
+	margin-bottom: 2rem;
+}
+	.blog-list-item hr {
+		margin-top: 2rem;
+	}
 
 .flexbox {
 	display: flex;
@@ -122,6 +134,7 @@ textarea {
 	height: 2px;
 	bottom: 0;
 	left: 0;
+	opacity: .9;
 	transform: scaleX(0);
 	transform-origin: bottom left;
 	transition: transform 0.3s ease-out;
@@ -160,10 +173,12 @@ textarea {
 
 #main-column {
 	background: rgba(0, 0, 0, 0.0);
+	box-sizing: border-box;
 	margin: 2rem auto;
-	width: 900px;
+	padding: 0rem 1rem;
 	position: absolute;
 	top: 0;
 	left: 50%;
 	transform: translate(-50%, 0%);
+	width: 920px;
 }

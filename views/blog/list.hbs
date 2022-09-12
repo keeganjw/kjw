@@ -1,8 +1,19 @@
 <h1>Blog</h1>
 
 {{#each posts}}
-	<h2><a href="/blog/{{this.slug}}">{{this.title}}</a></h2>
-	<div><i>{{this.dateCreated}}</i></div>
-	<div>{{{this.description}}}</div>
+<div class="blog-list-item">
+	<h2>
+		<a href="/blog/{{this.slug}}">{{this.title}}</a>
+	</h2>
+	
+	<div>
+		<i>{{this.dateCreated}}</i>
+	</div>
+	
+	<div>
+		{{{this.description}}}
+	</div>
+	
 	<hr>
+</div>
 {{/each}}
