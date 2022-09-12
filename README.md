@@ -6,15 +6,18 @@ This is a repository for my personal site: [kjw.dev](https://kjw.dev)
 
 ### Remaining
 
-- [ ] Make user accounts persist to database
-- [ ] Create admin published posts page
-- [ ] Create admin draft posts page
+- [ ] Finish styling for list views
+- [ ] Create responsive/mobile style
+- [ ] Fix markdown/handlebars edit issue
 - [ ] Finish preview page
-- [ ] Create separate layout and style for admin pages
-- [ ] Add image upload ability to posts
 
 ### Completed
 
+- [X] Add image upload ability to posts
+- [X] Create separate layout and style for admin pages
+- [X] Make user accounts persist to database
+- [X] Create admin published posts page
+- [X] Create admin draft posts page
 - [X] Add user accounts
 - [X] Add login page
 - [X] Protect admin pages behind login
