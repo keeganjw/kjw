@@ -77,6 +77,7 @@ nav {
 	nav ul {
 		background-color: var(--light-bg);
 		border-radius: var(--radius);
+		color: var(--dark-text);
 		display: flex;
 		list-style: none;
 		padding: 0rem 1rem;
@@ -144,7 +145,6 @@ textarea {
 }
 
 .underscore {
-	color: var(--dark-text) !important;
 	display: inline-block;
 	position: relative;
 }
@@ -218,6 +218,10 @@ textarea {
 	z-index: 0;
 }
 
+#menu-button {
+	display: none;
+}
+
 
 /*********************
 	Media Queries    *
@@ -242,7 +246,6 @@ textarea {
 	.lightbox {
 		background-color: inherit;
 		border-radius: inherit;
-		color: inherit;
 		padding: inherit;
 	}
 
@@ -250,9 +253,16 @@ textarea {
 		background-color: var(--light-bg);
 		border-radius: var(--radius);
 		box-sizing: border-box;
-		color: var(--dark-text);
 		margin-bottom: 1rem;
 		padding: 1.5rem 1rem;
 		width: 100%;
+	}
+
+	nav ul li {
+		display: none;
+	}
+
+	#menu-button {
+		display: block;
 	}
 }

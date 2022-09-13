@@ -6,13 +6,16 @@ This is a repository for my personal site: [kjw.dev](https://kjw.dev)
 
 ### Remaining
 
+- [ ] Make nav menu slide open and closed when toggled
+- [ ] If menu has been toggled while collapsed and then the screen is expanded again, make the menu button disappear and the nav items reappear
 - [ ] Finish styling for list views
-- [ ] Create responsive/mobile style
 - [ ] Fix markdown/handlebars edit issue
 - [ ] Finish preview page
 
 ### Completed
 
+- [X] Make collapsable nav menu for mobile
+- [X] Create basic responsive/mobile style
 - [X] Add image upload ability to posts
 - [X] Create separate layout and style for admin pages
 - [X] Make user accounts persist to database

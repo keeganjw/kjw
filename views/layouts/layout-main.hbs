@@ -34,6 +34,25 @@
 
 	<!-- All icons purchased from flaticon.com -->
 	<link rel="icon" type="image/x-icon" href="/images/icons/cmd.png">
+
+	<script>
+		let isMenuHidden = true;
+
+		function toggleMenu() {
+			let menuItems = document.querySelectorAll('#menu li');
+
+			// If nav menu items are hidden, display them
+			if(isMenuHidden) {
+				menuItems.forEach((item) => { item.style.display = 'block'; });
+			}
+			// Otherwise, hide all nav menu items except the menu button
+			else {
+				menuItems.forEach((item) => { if(item.id !== 'menu-button') item.style.display = 'none'; });
+			}
+
+			isMenuHidden = !isMenuHidden;
+		}
+	</script>
 </head>
 
 <body>
@@ -46,7 +65,8 @@
 		</header>
 	
 		<nav>
-			<ul>
+			<ul id="menu">
+				<li id="menu-button" onclick="toggleMenu()">Menu ☰</li>
 				<li><a class="underscore" href="/">Home</a></li>
 				<li><a class="underscore" href="/projects">Projects</a></li>
 				<li><a class="underscore" href="/blog">Blog</a></li>
