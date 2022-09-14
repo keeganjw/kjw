@@ -228,17 +228,22 @@ textarea {
 **********************/
 
 @media screen and (max-width: 800px) {
+
+	/* Elements */
 	nav {
 		margin: 1.5rem 2rem 2.5rem 2rem;
 	}
-		nav ul {
-			display: block;
-		}
-			nav ul li {
-				display: block;
-				text-align: center;
-			}
 
+	nav ul {
+		display: block;
+	}
+
+	nav ul li {
+		display: none;
+		text-align: center;
+	}
+
+	/* Classes */
 	.flexbox {
 		display: block;
 	}
@@ -258,10 +263,7 @@ textarea {
 		width: 100%;
 	}
 
-	nav ul li {
-		display: none;
-	}
-
+	/* IDs */
 	#menu-button {
 		display: block;
 	}
