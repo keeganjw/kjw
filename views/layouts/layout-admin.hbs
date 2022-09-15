@@ -22,6 +22,8 @@
 
 	<!-- All icons purchased from flaticon.com -->
 	<link rel="icon" type="image/x-icon" href="/images/icons/cmd.png">
+
+	<script src="/js/responsive.js"></script>
 </head>
 
 <body>
@@ -34,7 +36,8 @@
 		</header>
 
 		<nav>
-			<ul>
+			<ul id="menu">
+				<li id="menu-button" onclick="toggleMenu()">Menu ☰</li>
 				<li><a href="/admin">Dashboard</a></li>
 				<li><a href="/admin/new">New Post</a></li>
 				<li><a href="/admin/drafts">Drafts</a></li>

@@ -2,20 +2,29 @@
 
 {{#each posts}}
 <div class="blog-list-item">
-	<h2>
-		<a href="/admin/preview/{{this.slug}}">{{this.title}}</a>
-	</h2>
-	
-	<div>
-		<i>{{this.dateCreated}}</i>
+	<div class="thumbnail-box">
+		{{#if this.thumbnail}}
+		<img class="thumbnail" src="{{this.thumbnail}}" alt="Thumbnail image for blog post: {{this.title}}">
+		{{/if}}
 	</div>
-	
-	<div>{{{this.description}}}</div>
-	
+
 	<div>
-		<a href="/admin/edit/{{this.slug}}">Edit</a>
+		<div class="post-title">
+			<a href="/blog/{{this.slug}}">{{this.title}}</a>
+		</div>
+
+		<div class="post-description">
+			{{{this.description}}}
+		</div>
+
+		<div>
+			By {{this.author}}<br>
+			<i>{{this.dateCreated}}</i>
+		</div>
+
+		<div>
+			<a href="/admin/edit/{{this.slug}}">Edit</a>
+		</div>
 	</div>
-	
-	<hr>
 </div>
 {{/each}}

@@ -107,6 +107,7 @@ textarea {
 ****************/
 
 .blog-list-item {
+	display: flex;
 	margin-bottom: 4rem;
 }
 
@@ -142,6 +143,18 @@ textarea {
 .subbox {
 	text-align: center;
 	width: 33%;
+}
+
+.thumbnail {
+	border-radius: var(--radius);
+	height: auto;
+	width: 180px;
+	
+}
+
+.thumbnail-box {
+	margin: .5rem 2rem 0rem 0rem;
+	width: 180px;
 }
 
 .underscore {
@@ -244,6 +257,10 @@ textarea {
 	}
 
 	/* Classes */
+	.blog-list-item {
+		display: block;
+	}
+
 	.flexbox {
 		display: block;
 	}
@@ -260,6 +277,16 @@ textarea {
 		box-sizing: border-box;
 		margin-bottom: 1rem;
 		padding: 1.5rem 1rem;
+		width: 100%;
+	}
+
+	.thumbnail {
+		height: auto;
+		width: 100%;
+	}
+
+	.thumbnail-box {
+		margin: 0rem 0rem 2rem 0rem;
 		width: 100%;
 	}
 

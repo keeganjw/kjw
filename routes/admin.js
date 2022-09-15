@@ -15,11 +15,13 @@ router.get('/', async (req, res) => {
 
 router.get('/published', async (req, res) => {
 	const posts = await Post.find({ isPublished: true }).lean();
+	posts.forEach((item, index, posts) => posts[index].dateCreated = dayjs(item.dateCreated).format('MMMM D, YYYY'));
 	res.render('admin/list', { layout: 'layout-admin', title: 'Published Posts', posts: posts });
 });
 
 router.get('/drafts', async (req, res) => {
 	const posts = await Post.find({ isPublished: false }).lean();
+	posts.forEach((item, index, posts) => posts[index].dateCreated = dayjs(item.dateCreated).format('MMMM D, YYYY'));
 	res.render('admin/list', { layout: 'layout-admin', title: 'Drafts', posts: posts });
 });
 
@@ -34,6 +36,7 @@ router.post('/new', async (req, res) => {
 			author: req.user.name,
 			slug: req.body.slug,
 			description: req.body.description,
+			thumbnail: req.body.thumbnail,
 			article: req.body.article
 		});
 
@@ -56,6 +59,7 @@ router.post('/new', async (req, res) => {
 router.get('/edit/:slug', async (req, res) => {
 	try {
 		const post = await Post.findOne({ slug: req.params.slug }).lean();
+		post.dateCreated = dayjs(post.dateCreated).format('MMMM D, YYYY');
 		// TEST, REMOVE LATER
 		//await fs.writeFile('./public/edit.txt', post.article);
 		res.render('admin/edit', { layout: 'layout-admin', title: post.title, post: post });
@@ -72,6 +76,7 @@ router.post('/edit/:slug', async (req, res) => {
 		author: req.user.name,
 		slug: req.body.slug,
 		description: req.body.description,
+		thumbnail: req.body.thumbnail,
 		article: req.body.article
 	}
 
