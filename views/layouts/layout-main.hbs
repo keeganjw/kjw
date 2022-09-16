@@ -35,7 +35,7 @@
 	<!-- All icons purchased from flaticon.com -->
 	<link rel="icon" type="image/x-icon" href="/images/icons/cmd.png">
 
-	<script src="/js/responsive.js"></script>
+	<script async src="/js/responsive.js"></script>
 </head>
 
 <body>
@@ -50,14 +50,24 @@
 		<nav>
 			<ul id="menu">
 				<li id="menu-button" onclick="toggleMenu()">Menu ☰</li>
-				<li><a class="underscore" href="/">Home</a></li>
-				<li><a class="underscore" href="/projects">Projects</a></li>
-				<li><a class="underscore" href="/blog">Blog</a></li>
-				<li><a class="underscore" target="_blank" rel="noopener noreferrer"
-						href="https://www.linkedin.com/in/keegan-woodward/">LinkedIn</a></li>
-				<li><a class="underscore" target="_blank" rel="noopener noreferrer"
-						href="https://www.github.com/keeganjw">GitHub</a></li>
-				<li><a class="underscore" href="/login">Login</a></li>
+				<a href="/">
+					<li><span class="underscore">Home</span></li>
+				</a>
+				<a href="/projects">
+					<li><span class="underscore">Projects</span></li>
+				</a>
+				<a href="/blog">
+					<li><span class="underscore">Blog</span></li>
+				</a>
+				<a target="_blank" rel="noopener noreferrer"href="https://www.linkedin.com/in/keegan-woodward/">
+					<li><span class="underscore">LinkedIn</span></li>
+				</a>
+				<a target="_blank" rel="noopener noreferrer" href="https://www.github.com/keeganjw">
+					<li><span class="underscore">GitHub</span></li>
+				</a>
+				<a href="/login">
+					<li><span class="underscore">Login</span></li>
+				</a>
 			</ul>
 		</nav>
 	

@@ -23,7 +23,7 @@
 	<!-- All icons purchased from flaticon.com -->
 	<link rel="icon" type="image/x-icon" href="/images/icons/cmd.png">
 
-	<script src="/js/responsive.js"></script>
+	<script async src="/js/responsive.js"></script>
 </head>
 
 <body>
@@ -38,12 +38,24 @@
 		<nav>
 			<ul id="menu">
 				<li id="menu-button" onclick="toggleMenu()">Menu ☰</li>
-				<li><a href="/admin">Dashboard</a></li>
-				<li><a href="/admin/new">New Post</a></li>
-				<li><a href="/admin/drafts">Drafts</a></li>
-				<li><a href="/admin/published">Published</a></li>
-				<li><a href="/admin/add-user">Add User</a></li>
-				<li><a href="/logout">Logout</a></li>
+				<a href="/admin">
+					<li><span class="underscore">Dashboard</span></li>
+				</a>
+				<a href="/admin/new">
+					<li><span class="underscore">New Post</span></li>
+				</a>
+				<a href="/admin/drafts">
+					<li><span class="underscore">Drafts</span></li>
+				</a>
+				<a href="/admin/published">
+					<li><span class="underscore">Published</span></li>
+				</a>
+				<a href="/admin/add-user">
+					<li><span class="underscore">Add User</span></li>
+				</a>
+				<a href="/logout">
+					<li><span class="underscore">Logout</span></li>
+				</a>
 			</ul>
 		</nav>
 		

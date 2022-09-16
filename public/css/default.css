@@ -67,7 +67,6 @@ label {
 
 nav a, nav a:active, nav a:hover, nav a:visited {
 	color: var(--dark-text);
-	padding-bottom: .2rem;
 	text-decoration: none;
 }
 
@@ -148,6 +147,7 @@ textarea {
 .thumbnail {
 	border-radius: var(--radius);
 	height: auto;
+	object-fit: cover;
 	width: 180px;
 	
 }
@@ -159,6 +159,7 @@ textarea {
 
 .underscore {
 	display: inline-block;
+	padding-bottom: .1rem;
 	position: relative;
 }
 
