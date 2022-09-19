@@ -1,19 +1,30 @@
 <div>
 	<form action="/admin/blog-images" method="post" enctype="multipart/form-data">
-		<h2>Upload An Image</h2>
-		<input type="file" name="image" id="image" accept="image/*">
+		<div>
+			<h2>Upload An Image</h2>
+			<input type="file" name="image" id="image" accept="image/*">
+		</div>
 
-		<br><br>
-
-		<button type="submit">Upload</button>
+		<div>
+			<button type="submit">Upload</button>
+		</div>
 	</form>
 </div>
 
 <h2>Available Images</h2>
 
-{{#each images}}
-	<img src="{{this}}" width="200px" alt="">
-	<div>
-		{{this}}
-	</div>
-{{/each}}
+<div class="flexbox">
+	{{#each images}}
+		<div class="image-box">
+			<img src="/images/uploads/{{this}}" alt="An uploaded image.">
+		
+			<div>
+				/images/uploads/{{this}}
+			</div>
+		
+			<div>
+				<a href="/admin/blog-images/delete/{{this}}">Delete</a>
+			</div>
+		</div>
+	{{/each}}
+</div>

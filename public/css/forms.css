@@ -12,6 +12,16 @@ textarea {
 	padding: 8px;
 }
 
+/***************
+	Classes    *
+****************/
+
+.image-box {
+	box-sizing: border-box;
+	padding: 1rem 1rem 1rem 0rem;
+	width: 33%;
+}
+
 /***********
 	IDs    *
 ************/

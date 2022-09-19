@@ -162,7 +162,7 @@ router.get('/blog-images', async (req, res) => {
 	// Remove the .gitignore file from array
 	images = images.filter((item) => item !== '.gitignore');
 	// Set each string as the full encoded URI path to the image
-	images.forEach((item, index, images) => images[index] = encodeURI('/images/uploads/' + item));
+	images.forEach((item, index, images) => images[index] = encodeURI(item));
 
 	res.render('admin/blog-images', { layout: 'layout-admin', images: images, title: 'Upload and Select Blog Images' });
 });
@@ -170,14 +170,14 @@ router.get('/blog-images', async (req, res) => {
 router.post('/blog-images', (req, res) => {
 	try {
 		// If there's an image to upload, try to uploading it to /public/images/uploads
-		if (req.files.image) {
+		if(req.files.image) {
 			const image = req.files.image;
 
 			// Move uploaded image to ./public/images/uploads folder
 			image.mv('./public/images/uploads/' + image.name, (error) => {
 				if(error) {
 					// Upload failed
-					res.send('Upload failed when moving: ' + error);
+					res.send(`Upload failed when moving: ${error}`);
 				}
 				else {
 					// Upload succeeded
@@ -187,12 +187,23 @@ router.post('/blog-images', (req, res) => {
 		}
 		// User clicked submit without uploading an image
 		else {
-			res.send('No image uploaded');
+			res.send('No image selected to upload.');
 		}
 	}
 	catch(error) {
-		res.send('Upload failed: ' + error);
+		res.send(`Upload failed: ${error}`);
 	}
+});
+
+router.get('/blog-images/delete/:file', async (req, res) => {
+	try {
+		await fs.unlink(`./public/images/uploads/${req.params.file}`);
+	}
+	catch(error) {
+		console.log(error);
+	}
+
+	res.redirect('/admin/blog-images');
 });
 
 module.exports = {
