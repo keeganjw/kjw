@@ -10,8 +10,10 @@
 
 <div>Is Published: {{post.isPublished}}</div>
 
+<div>Slug: {{post.slug}}</div>
+
 <div>
-	<a href="/admin/edit/{{post.slug}}">Edit Post</a>
+	<a href="/admin/edit/{{post._id}}">Edit Post</a>
 </div>
 
 {{{post.article}}}

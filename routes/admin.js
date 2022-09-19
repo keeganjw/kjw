@@ -9,6 +9,37 @@ const User = require('../models/user');
 const router = express.Router();
 const markdown = new showdown.Converter();
 
+async function deletePost(req, res) {
+	try {
+		await Post.findByIdAndDelete(req.params.id);
+		res.redirect('/admin');
+	}
+	catch (error) {
+		res.send('Failed to delete blog post.');
+	}
+}
+
+async function updatePost(req, res) {
+	const update = {
+		title: req.body.title,
+		author: req.user.name,
+		slug: req.body.slug,
+		description: req.body.description,
+		thumbnail: req.body.thumbnail,
+		article: req.body.article
+	}
+
+	// TODO: Change isPublished status here
+
+	try {
+		const post = await Post.findByIdAndUpdate(req.params.id, update, { returnOriginal: false }).lean();
+		res.redirect(`/admin/preview/${post._id}`);
+	}
+	catch (error) {
+		res.send('Blog post not found for editing.');
+	}
+}
+
 router.get('/', async (req, res) => {
 	res.render('admin/index', { layout: 'layout-admin', title: 'Dashboard' });
 });
@@ -47,7 +78,7 @@ router.post('/new', async (req, res) => {
 			res.redirect(`/blog/${post.slug}`);
 		}
 		else {
-			res.redirect(`/admin/preview/${post.slug}`);
+			res.redirect(`/admin/preview/${post._id}`);
 		}
 	}
 	catch (error) {
@@ -56,9 +87,9 @@ router.post('/new', async (req, res) => {
 	}
 });
 
-router.get('/edit/:slug', async (req, res) => {
+router.get('/edit/:id', async (req, res) => {
 	try {
-		const post = await Post.findOne({ slug: req.params.slug }).lean();
+		const post = await Post.findById(req.params.id).lean();
 		post.dateCreated = dayjs(post.dateCreated).format('MMMM D, YYYY');
 		// TEST, REMOVE LATER
 		//await fs.writeFile('./public/edit.txt', post.article);
@@ -69,33 +100,21 @@ router.get('/edit/:slug', async (req, res) => {
 	}
 });
 
-router.post('/edit/:slug', async (req, res) => {
-	const slug = req.params.slug;
-	let update = {
-		title: req.body.title,
-		author: req.user.name,
-		slug: req.body.slug,
-		description: req.body.description,
-		thumbnail: req.body.thumbnail,
-		article: req.body.article
+router.post('/edit/:id', async (req, res) => {
+	if(req.body.submit === 'save') {
+		await updatePost(req, res);
 	}
-
-	// TODO: Change isPublished status here
-
-	try {
-		let post = await Post.findOneAndUpdate({ slug: slug }, update, { returnOriginal: false }).lean();
-		res.redirect(`/admin/preview/${post.slug}`);
+	else if(req.body.submit === 'delete') {
+		await deletePost(req, res);
 	}
-	catch (error) {
-		res.send('Blog post not found for editing.');
+	else {
+		res.redirect(`/admin/preview/${req.params.id}`);
 	}
 });
 
-router.get('/preview/:slug', async (req, res) => {
-	const slug = req.params.slug;
-
+router.get('/preview/:id', async (req, res) => {
 	try {
-		let post = await Post.findOne({ slug: slug }).lean();
+		let post = await Post.findById(req.params.id).lean();
 		post.article = markdown.makeHtml(post.article);
 		post.dateCreated = dayjs(post.dateCreated).format('MMMM D, YYYY');
 		res.render('admin/preview', { layout: 'layout-admin', title: post.title, post: post });
@@ -113,6 +132,7 @@ router.post('/add-user', async (req, res) => {
 	// If passwords entered do not match, return to add user page
 	if(req.body.password !== req.body.confirmPassword) {
 		res.redirect('/admin/add-user');
+		return;
 	}
 
 	try {

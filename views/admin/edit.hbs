@@ -1,6 +1,6 @@
 <h1>Edit Post</h1>
 
-<form action="/admin/edit/{{post.slug}}" method="post">
+<form action="/admin/edit/{{post._id}}" method="post">
 	{{> prt-post-form-fields }}
 
 	<div>
@@ -8,12 +8,8 @@
 	</div>
 
 	<div id="button-row">
-		<button type="submit" name="save" value="save">Save</button>
-		{{!-- {{#if post.isPublished}}
-		<button type="submit" name="save" value="unpublish">Save & Unpublish</button>
-		{{else}}
-		<button type="submit" name="save" value="publish">Save & Publish</button>
-		{{/if}} --}}
-		<button type="button" value="preview">Preview</button>
+		<button type="submit" name="submit" value="save">Save</button>
+		<button type="submit" name="submit" value="delete">Delete</button>
+		<button type="submit" name="submit" value="preview">Preview</button>
 	</div>
 </form>
