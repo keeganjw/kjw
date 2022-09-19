@@ -91,7 +91,7 @@ app.get('/logout', auth.allowIfAuthenticated, (req, res, next) => {
 			return next(error);
 		}
 
-		res.redirect('/');
+		res.redirect('/login');
 	});
 });
 

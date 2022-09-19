@@ -158,8 +158,10 @@ router.post('/add-user', async (req, res) => {
 
 router.get('/blog-images', async (req, res) => {
 	// Get file names of all files in public/images/uploads
-	// Then set each string as the full encoded URI path to the image
 	let images = await fs.readdir('./public/images/uploads');
+	// Remove the .gitignore file from array
+	images = images.filter((item) => item !== '.gitignore');
+	// Set each string as the full encoded URI path to the image
 	images.forEach((item, index, images) => images[index] = encodeURI('/images/uploads/' + item));
 
 	res.render('admin/blog-images', { layout: 'layout-admin', images: images, title: 'Upload and Select Blog Images' });
