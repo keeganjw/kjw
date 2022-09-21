@@ -6,7 +6,7 @@ This is a repository for my personal site: [kjw.dev](https://kjw.dev)
 
 ### Remaining
 
-- [ ] Add ability to delete uploaded images
+- [ ] Refine Modal
 - [ ] Make nav menu slide open and closed when toggled
 - [ ] Fix markdown/handlebars edit issue
 - [ ] Fill out projects page
@@ -17,6 +17,8 @@ This is a repository for my personal site: [kjw.dev](https://kjw.dev)
 
 ### Completed
 
+- [X] Add modal for delete confirmation
+- [X] Add ability to delete uploaded images
 - [X] Add ability to delete posts
 - [X] Finish styling for list views
 - [X] Fix menu issue (after toggled in mobile mode)

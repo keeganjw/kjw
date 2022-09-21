@@ -22,6 +22,28 @@ textarea {
 	width: 33%;
 }
 
+#modal {
+	align-items: center;
+	background: rgba(0, 0, 0, .5);
+	box-sizing: border-box;
+	display: none;
+	height: 100vh;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+}
+
+#modal-container {
+	background-color: #fff;
+	border-radius: var(--radius);
+	box-sizing: border-box;
+	color: var(--dark-text);
+	padding: 2rem;
+	width: 26rem;
+}
+
 /***********
 	IDs    *
 ************/
