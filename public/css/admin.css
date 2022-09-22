@@ -22,20 +22,20 @@ textarea {
 	width: 33%;
 }
 
-#modal {
+.modal {
 	align-items: center;
 	background: rgba(0, 0, 0, .5);
 	box-sizing: border-box;
 	display: none;
 	height: 100vh;
 	justify-content: center;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100vw;
 }
 
-#modal-container {
+.modal-content {
 	background-color: #fff;
 	border-radius: var(--radius);
 	box-sizing: border-box;

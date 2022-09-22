@@ -30,8 +30,8 @@
 	{{/each}}
 </div>
 
-<div id="modal">
-	<div id="modal-container">
+<div id="delete-confirmation" class="modal">
+	<div class="modal-content">
 		<h3>Are you sure you want to delete this picture?</h3>
 
 		<div id="filename" style="font-style: italic; margin: 1rem 0rem 2rem 0rem;">
@@ -47,10 +47,10 @@
 	function showModal(file) {
 		document.getElementById('filename').innerHTML = file;
 		document.getElementById('modal-delete').setAttribute('onclick', `location.href="/admin/blog-images/delete/${file}"`);
-		document.getElementById('modal').style.display = 'flex';
+		document.getElementById('delete-confirmation').style.display = 'flex';
 	}
 
 	function closeModal() {
-		document.getElementById('modal').style.display = 'none';
+		document.getElementById('delete-confirmation').style.display = 'none';
 	}
 </script>

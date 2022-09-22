@@ -6,7 +6,6 @@ This is a repository for my personal site: [kjw.dev](https://kjw.dev)
 
 ### Remaining
 
-- [ ] Refine Modal
 - [ ] Make nav menu slide open and closed when toggled
 - [ ] Fix markdown/handlebars edit issue
 - [ ] Fill out projects page
@@ -17,6 +16,7 @@ This is a repository for my personal site: [kjw.dev](https://kjw.dev)
 
 ### Completed
 
+- [X] Refine Modal
 - [X] Add modal for delete confirmation
 - [X] Add ability to delete uploaded images
 - [X] Add ability to delete posts

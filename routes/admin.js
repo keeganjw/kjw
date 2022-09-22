@@ -45,7 +45,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/published', async (req, res) => {
-	const posts = await Post.find({ isPublished: true }).lean();
+	const posts = await Post.find({ isPublished: true }).sort({ dateCreated: -1 }).lean();
 	posts.forEach((item, index, posts) => posts[index].dateCreated = dayjs(item.dateCreated).format('MMMM D, YYYY'));
 	res.render('admin/list', { layout: 'layout-admin', title: 'Published Posts', posts: posts });
 });
@@ -75,10 +75,10 @@ router.post('/new', async (req, res) => {
 		post = await post.save();
 		
 		if(post.isPublished) {
-			res.redirect(`/blog/${post.slug}`);
+			res.redirect(`/admin/published`);
 		}
 		else {
-			res.redirect(`/admin/preview/${post._id}`);
+			res.redirect(`/admin/draft`);
 		}
 	}
 	catch (error) {

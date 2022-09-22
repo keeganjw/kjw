@@ -7,7 +7,7 @@ const Post = require('../models/post');
 const markdown = new showdown.Converter();
 
 router.get('/', async (req, res) => {
-	let posts = await Post.find({ isPublished: true }).lean();
+	let posts = await Post.find({ isPublished: true }).sort({ dateCreated: -1 }).lean();
 	posts.forEach((item, index, posts) => posts[index].dateCreated = dayjs(item.dateCreated).format('MMMM D, YYYY'));
 	res.render('blog/list', { title: 'Blog', posts: posts });
 });
