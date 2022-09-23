@@ -1,3 +1,22 @@
+<div>
+	<b>Status:</b>
+	{{#if post.isPublished}}
+		Published
+	{{else}}
+		Draft
+	{{/if}}
+</div>
+
+<div><b>URL Slug:</b> {{post.slug}}</div>
+
+<br>
+
+<div>
+	<a href="/admin/edit/{{post._id}}">Edit Post</a>
+</div>
+
+<br><br>
+
 <h1>{{post.title}}</h1>
 
 <h3>
@@ -7,13 +26,5 @@
 <div>by {{post.author}}</div>
 
 <div>on {{post.dateCreated}}</div>
-
-<div>Is Published: {{post.isPublished}}</div>
-
-<div>Slug: {{post.slug}}</div>
-
-<div>
-	<a href="/admin/edit/{{post._id}}">Edit Post</a>
-</div>
 
 {{{post.article}}}

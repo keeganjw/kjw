@@ -12,10 +12,10 @@ This is a repository for my personal site: [kjw.dev](https://kjw.dev)
 - [ ] Finalize home page
 - [ ] Finish form validation
 - [ ] Add event logging
-- [ ] Finish preview page
 
 ### Completed
 
+- [X] Finish preview page
 - [X] Refine Modal
 - [X] Add modal for delete confirmation
 - [X] Add ability to delete uploaded images
