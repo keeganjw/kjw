@@ -58,6 +58,7 @@ hr {
 }
 
 img {
+	border-radius: var(--radius);
 	width: 100%;
 }
 
@@ -122,6 +123,7 @@ textarea {
 }
 
 	.lightbox img {
+		border-radius: 0px;
 		height: 80px;
 		width: auto;
 	}
