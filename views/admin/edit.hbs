@@ -3,6 +3,10 @@
 <form action="/admin/edit/{{post._id}}" method="post">
 	{{> prt-post-form-fields }}
 
+	{{!-- <pre>
+		{{{post.article}}}
+	</pre> --}}
+
 	<div>
 		<input type="checkbox" name="isPublished" {{#if post.isPublished}}checked{{/if}}> Is Published
 	</div>

@@ -14,7 +14,17 @@
 	background-color: #4773C0;
 }
 
-a, a:hover, a:visited {
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+
+a,
+a:hover,
+a:visited {
 	color: #BAD3FC;
 }
 
@@ -47,8 +57,14 @@ form textarea {
 	width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	font-weight: 900;
+	margin: 1rem 0px;
 }
 
 hr {
@@ -66,7 +82,10 @@ label {
 	display: block;
 }
 
-nav a, nav a:active, nav a:hover, nav a:visited {
+nav a,
+nav a:active,
+nav a:hover,
+nav a:visited {
 	color: var(--dark-text);
 	text-decoration: none;
 }
@@ -95,7 +114,6 @@ p {
 }
 
 textarea {
-	box-sizing: border-box;
 	font-family: 'Nunito', sans-serif;
 	height: 50rem;
 	padding: 1rem;
@@ -227,7 +245,6 @@ textarea {
 
 #main-column {
 	background: rgba(0, 0, 0, 0.0);
-	box-sizing: border-box;
 	margin: 2rem auto;
 	padding: 0rem 1rem;
 	max-width: 920px;
@@ -236,6 +253,55 @@ textarea {
 
 #menu-button {
 	display: none;
+}
+
+/*****************************************/
+
+#about {
+	padding-left: 1.5rem;
+}
+
+#ddd-box {
+	margin-bottom: 3rem;
+}
+
+#subheader {
+	font-style: italic;
+	margin: 3rem 0px;
+	text-align: center;
+}
+
+#welcome {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-top: 3rem;
+}
+
+#profile-image {
+	border-radius: 50%;
+	display: block;
+	height: auto;
+	width: 200px;
+}
+
+#profile-image-wrapper {
+	position: relative;
+	/* Generated using: https://learnui.design/tools/gradient-generator.html */
+	/* background: linear-gradient(90deg, #0e80c7, #8e7fd1, #d57cc0, #ff849f, #ff9d7c, #ffc168); */
+	background: linear-gradient(90deg, #1f005c, #261c6f, #2f3282, #394893, #465da4, #5573b4, #6789c3, #7b9fd1);
+	border-radius: 50%;
+	box-sizing: content-box;
+	padding: 8px;
+	height: auto;
+	width: 200px;
+}
+
+#subtitle {
+	font-size: 2.5rem;
+	font-weight: 900;
+	padding-right: 1.5rem;
 }
 
 
@@ -277,7 +343,6 @@ textarea {
 	.subbox {
 		background-color: var(--light-bg);
 		border-radius: var(--radius);
-		box-sizing: border-box;
 		margin-bottom: 1rem;
 		padding: 1.5rem 1rem;
 		width: 100%;

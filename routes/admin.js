@@ -93,6 +93,8 @@ router.get('/edit/:id', async (req, res) => {
 		post.dateCreated = dayjs(post.dateCreated).format('MMMM D, YYYY');
 		// TEST, REMOVE LATER
 		//await fs.writeFile('./public/edit.txt', post.article);
+		console.log(JSON.stringify(post.article));
+		post.article = JSON.stringify(post.article);
 		res.render('admin/edit', { layout: 'layout-admin', title: post.title, post: post });
 	}
 	catch (error) {
