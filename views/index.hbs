@@ -46,17 +46,18 @@
 
 <h2>Examples of Work</h2>
 
-<div id="work-examples" class="flexbox">
+<div class="flexbox">
 	<div>
 		<h3>Work Orders</h3>
 
 		<p>I completely overhauled the State of Vermont, Military Department's work order management system.
 			I updated the site's design, back-end code, and database to better server the needs of the department.
 			Updates are continuously deployed as changes occur.</p>
+
+		<p><a href="#">See More</a></p>
 	</div>
 	<div>
-		<img class="radius" src="images/work-orders-login.png" width="100%"
-			alt="A screenshot of the work order website login page.">
+		<img src="images/work-orders-login.png" width="100%" alt="A screenshot of the work order website login page.">
 	</div>
 </div>
 
@@ -75,8 +76,8 @@
 
 	window.setInterval(function () {
 		// Rotate profile image border gradient by 7 degrees every 100ms
-		background = `background: linear-gradient(${degree}deg, #192399, #223aa7, #2f4fb4, #3f64c0, #5178cb, #658dd4, #7ba1dd, #93b5e5);`;
-		document.getElementById('profile-image-wrapper').style.background = background;
+		background = `background: linear-gradient(${degree}deg, #81afed, #91b9f0, #a1c3f2, #b1cdf5, #c1d7f7, #d0e2f9, #e0ecfc, #f0f6fe);`
+		document.getElementById('profile-image-wrapper').style = background;
 		degree = (degree + 7) % 360;
 
 		if(subtimer === 25) {

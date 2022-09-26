@@ -102,7 +102,6 @@ nav {
 		padding: 0rem 1rem;
 	}
 		nav ul li {
-			/* border-radius: var(--radius); */
 			padding: 1rem 1rem;
 		}
 			nav ul li:hover {
@@ -110,6 +109,7 @@ nav {
 			}
 
 p {
+	margin: 1rem 0px;
 	line-height: 1.6rem;
 }
 
@@ -127,6 +127,19 @@ textarea {
 .blog-list-item {
 	display: flex;
 	margin-bottom: 4rem;
+}
+
+.w40 {
+	width: 40%;
+}
+
+	.w40 img {
+		margin-top: 1rem;
+	}
+
+.w60 {
+	width: 60%;
+	padding-right: 2rem;
 }
 
 .flexbox {
@@ -270,7 +283,7 @@ textarea {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	margin: 5rem 0px;
+	margin: 4rem 0px;
 }
 
 #profile-image {
@@ -283,8 +296,7 @@ textarea {
 #profile-image-wrapper {
 	position: relative;
 	/* Generated using: https://learnui.design/tools/gradient-generator.html */
-	/* background: linear-gradient(90deg, #0e80c7, #8e7fd1, #d57cc0, #ff849f, #ff9d7c, #ffc168); */
-	background: linear-gradient(90deg, #1f005c, #261c6f, #2f3282, #394893, #465da4, #5573b4, #6789c3, #7b9fd1);
+	background: linear-gradient(90deg, #81afed, #91b9f0, #a1c3f2, #b1cdf5, #c1d7f7, #d0e2f9, #e0ecfc, #f0f6fe);
 	border-radius: 50%;
 	box-sizing: content-box;
 	padding: 8px;
@@ -300,7 +312,7 @@ textarea {
 
 #update-text {
 	opacity: 1;
-	transition: opacity .5s;
+	transition: opacity .5s ease-in-out;
 }
 
 
@@ -354,6 +366,14 @@ textarea {
 
 	.thumbnail-box {
 		margin: 0rem 0rem 2rem 0rem;
+		width: 100%;
+	}
+
+	.w40 {
+		width: 100%;
+	}
+
+	.w60 {
 		width: 100%;
 	}
 
