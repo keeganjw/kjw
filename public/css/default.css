@@ -218,7 +218,7 @@ textarea {
 	position: absolute;
 	top: 0;
 	left: 0;
-	height: 90vh;
+	height: 80vh;
 	width: 100%;
 	z-index: -1;
 }
@@ -265,18 +265,12 @@ textarea {
 	margin-bottom: 3rem;
 }
 
-#subheader {
-	font-style: italic;
-	margin: 3rem 0px;
-	text-align: center;
-}
-
 #welcome {
 	align-items: center;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	margin-top: 3rem;
+	margin: 5rem 0px;
 }
 
 #profile-image {
@@ -302,6 +296,11 @@ textarea {
 	font-size: 2.5rem;
 	font-weight: 900;
 	padding-right: 1.5rem;
+}
+
+#update-text {
+	opacity: 1;
+	transition: opacity .5s;
 }
 
 

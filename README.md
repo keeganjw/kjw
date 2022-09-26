@@ -6,7 +6,6 @@ This is a repository for my personal site: [kjw.dev](https://kjw.dev)
 
 ### Remaining
 
-- [ ] Make nav menu slide open and closed when toggled
 - [ ] Fix markdown/handlebars edit issue
 - [ ] Fill out projects page
 - [ ] Finalize home page

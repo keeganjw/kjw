@@ -7,12 +7,10 @@
 		<div id="subtitle">Hi, I'm Keegan!</div>
 
 		<div id="about-text">
-			I am a <span id="update-text">web developer. 👨‍💻</span>
+			<span id="update-text">I am a web developer. 👨‍💻</span>
 		</div>
 	</div>
 </div>
-
-<h2 id="subheader">In eu fringilla, varius dui sit amet, pharetra lorem vestibulum non consequat nisi.</h2>
 
 <div id="ddd-box" class="flexbox lightbox">
 	<div class="subbox">
@@ -22,7 +20,7 @@
 
 		<h3>Design</h3>
 
-		<p>Solid abilities in front-end design.</p>
+		<p>In depth knowledge of HTML and CSS.</p>
 	</div>
 
 	<div class="subbox">
@@ -32,7 +30,7 @@
 
 		<h3>Develop</h3>
 
-		<p>ASP.NET and database development experience.</p>
+		<p>Node.js and ASP.NET development experience.</p>
 	</div>
 
 	<div class="subbox">
@@ -42,7 +40,7 @@
 
 		<h3>Deploy</h3>
 
-		<p>Server admin for both Windows and Linux.</p>
+		<p>Server admin for both Windows and Linux systems.</p>
 	</div>
 </div>
 
@@ -78,12 +76,17 @@
 	window.setInterval(function () {
 		// Rotate profile image border gradient by 7 degrees every 100ms
 		background = `background: linear-gradient(${degree}deg, #192399, #223aa7, #2f4fb4, #3f64c0, #5178cb, #658dd4, #7ba1dd, #93b5e5);`;
-		document.getElementById('profile-image-wrapper').style = background;
+		document.getElementById('profile-image-wrapper').style.background = background;
 		degree = (degree + 7) % 360;
 
-		// Update about text every 2500ms
-		if (subtimer === 25) {
-			document.getElementById('update-text').innerHTML = text[i];
+		if(subtimer === 25) {
+			document.getElementById('update-text').style.opacity = 0;
+			subtimer++;
+		}
+		else if (subtimer === 30) {
+			// Update about text every 3000ms, fade it in
+			document.getElementById('update-text').innerText = `I am a ${text[i]}`;
+			document.getElementById('update-text').style.opacity = 1;
 			i = (i + 1) % text.length;
 			subtimer = 1;
 		} else {
