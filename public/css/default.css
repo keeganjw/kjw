@@ -274,6 +274,10 @@ textarea {
 	padding-left: 1.5rem;
 }
 
+#about-text {
+	margin: .5rem 0px 0px .2rem;
+}
+
 #ddd-box {
 	margin-bottom: 3rem;
 }
@@ -281,7 +285,7 @@ textarea {
 #welcome {
 	align-items: center;
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	justify-content: center;
 	margin: 4rem 0px;
 }
@@ -380,5 +384,20 @@ textarea {
 	/* IDs */
 	#menu-button {
 		display: block;
+	}
+}
+
+@media screen and (max-width: 610px) {
+	#about {
+		text-align: center;
+		width: 100%;
+	}
+	
+	#subtitle {
+		margin-top: 1rem;
+	}
+
+	#welcome {
+		flex-wrap: wrap;
 	}
 }
