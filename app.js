@@ -9,6 +9,7 @@ const LocalStrategy = require('passport-local');
 const auth = require('./auth');
 const admin = require('./routes/admin');
 const blog = require('./routes/blog');
+const projects = require('./routes/projects');
 const secrets = require('./secrets/secrets');
 const User = require('./models/user');
 
@@ -65,14 +66,12 @@ passport.deserializeUser((user, done) => {
 
 // Set routes from other files
 app.use('/blog', blog.router);
+app.use('/projects', projects.router);
 app.use('/admin', auth.allowIfAuthenticated, admin.router);
 
 // Set remaining routes
 app.get('/', (req, res) => {
 	res.render('index', { title: 'Keegan Woodward' });
-});
-app.get('/projects', (req, res) => {
-	res.render('projects', { title: 'Projects' });
 });
 
 app.get('/login', (req, res) => {

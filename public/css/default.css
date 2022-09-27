@@ -25,11 +25,11 @@
 a,
 a:hover,
 a:visited {
-	color: #BAD3FC;
+	color: #b2d2ff;
 }
 
 a:active {
-	color: #C9DCFD;
+	color: #b2e7ff;
 }
 
 body {
@@ -300,7 +300,8 @@ textarea {
 #profile-image-wrapper {
 	position: relative;
 	/* Generated using: https://learnui.design/tools/gradient-generator.html */
-	background: linear-gradient(90deg, #81afed, #91b9f0, #a1c3f2, #b1cdf5, #c1d7f7, #d0e2f9, #e0ecfc, #f0f6fe);
+	/* background: linear-gradient(90deg, #81afed, #91b9f0, #a1c3f2, #b1cdf5, #c1d7f7, #d0e2f9, #e0ecfc, #f0f6fe); */
+	background: linear-gradient(90deg, #75d4fe, #8edafe, #a4e0fe, #b8e6ff, #cbedff, #ddf3ff, #eef9ff, #ffffff);
 	border-radius: 50%;
 	box-sizing: content-box;
 	padding: 8px;
@@ -327,10 +328,6 @@ textarea {
 @media screen and (max-width: 800px) {
 
 	/* Elements */
-	nav {
-		margin: 1.5rem 2rem 2.5rem 2rem;
-	}
-
 	nav ul {
 		display: block;
 	}

@@ -7,13 +7,14 @@ This is a repository for my personal site: [kjw.dev](https://kjw.dev)
 ### Remaining
 
 - [ ] Fix markdown/handlebars edit issue
-- [ ] Fill out projects page
+- [ ] Create pages for each project
 - [ ] Finalize home page
 - [ ] Finish form validation
 - [ ] Add event logging
 
 ### Completed
 
+- [X] Fill out projects page
 - [X] Finish preview page
 - [X] Refine Modal
 - [X] Add modal for delete confirmation
