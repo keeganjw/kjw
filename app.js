@@ -74,6 +74,10 @@ app.get('/', (req, res) => {
 	res.render('index', { title: 'Keegan Woodward' });
 });
 
+app.get('/about', (req, res) => {
+	res.render('about', { title: 'Keegan Woodward' });
+});
+
 app.get('/login', (req, res) => {
 	res.render('login', { title: 'Login' });
 });
