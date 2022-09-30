@@ -6,6 +6,9 @@ This is a repository for my personal site: [kjw.dev](https://kjw.dev)
 
 ### Remaining
 
+- [ ] Fill in work orders proj page
+- [ ] Fill in kjw proj page
+- [ ] Fill in passport app proj page
 - [ ] Fix markdown/handlebars edit issue
 - [ ] Create pages for each project
 - [ ] Finalize home page
