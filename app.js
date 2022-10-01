@@ -82,7 +82,7 @@ app.get('/login', (req, res) => {
 	res.render('login', { title: 'Login' });
 });
 
-app.post('/login', auth.disallowIfAuthenticated, passport.authenticate('local', {
+app.post('/login', auth.redirectIfAuthenticated, passport.authenticate('local', {
 	successRedirect: '/admin',
 	failureRedirect: '/login',
 	failureFlash: true

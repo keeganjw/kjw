@@ -10,13 +10,13 @@ This is a repository for my personal site: [kjw.dev](https://kjw.dev)
 - [ ] Fill in kjw proj page
 - [ ] Fill in passport app proj page
 - [ ] Fix markdown/handlebars edit issue
-- [ ] Create pages for each project
 - [ ] Finalize home page
 - [ ] Finish form validation
 - [ ] Add event logging
 
 ### Completed
 
+- [X] Create pages for each project
 - [X] Fill out projects page
 - [X] Finish preview page
 - [X] Refine Modal

@@ -8,7 +8,7 @@ async function authenticateUser(email, password, done) {
 
 	// If user doesn't exist, return failed login message
 	if (!user) {
-		return done(null, false, 'User not found.');
+		return done(null, false, failedLoginMessage);
 	}
 	else {
 		// Check if passwords match
@@ -20,7 +20,7 @@ async function authenticateUser(email, password, done) {
 		}
 		// If password doesn't match, return failed login message
 		else {
-			return done(null, false, 'Password incorrect.');
+			return done(null, false, failedLoginMessage);
 		}
 	}
 }
@@ -34,7 +34,7 @@ function allowIfAuthenticated(req, res, next) {
 	}
 }
 
-function disallowIfAuthenticated(req, res, next) {
+function redirectIfAuthenticated(req, res, next) {
 	if (!req.isAuthenticated()) {
 		return next();
 	}
@@ -46,5 +46,5 @@ function disallowIfAuthenticated(req, res, next) {
 module.exports = {
 	authenticateUser,
 	allowIfAuthenticated,
-	disallowIfAuthenticated
+	redirectIfAuthenticated
 }

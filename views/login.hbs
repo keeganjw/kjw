@@ -11,12 +11,11 @@
 		<input type="password" name="password" id="password" required>
 	</div>
 
+	{{#if messages.error}}
+		<div style="color: lightcoral">{{messages.error}}</div>
+	{{/if}}
+
 	<div id="button-row">
 		<button type="submit">Log In</button>
 	</div>
 </form>
-
-<br>
-{{#if messages.error}}
-	<div>{{messages.error}}</div>
-{{/if}}
