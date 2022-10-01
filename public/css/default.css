@@ -146,19 +146,6 @@ textarea {
 	display: flex;
 }
 
-.lightbox {
-	background-color: var(--light-bg);
-	border-radius: var(--radius);
-	color: var(--dark-text);
-	padding: 1.5rem 1rem;
-}
-
-	.lightbox img {
-		border-radius: 0px;
-		height: 80px;
-		width: auto;
-	}
-
 .post-description {
 	margin: .5rem 0rem 1rem 0rem;
 }
@@ -170,11 +157,6 @@ textarea {
 
 .radius {
 	border-radius: var(--radius);
-}
-
-.subbox {
-	text-align: center;
-	width: 33%;
 }
 
 .thumbnail {
@@ -224,6 +206,14 @@ textarea {
 	IDs    *
 ************/
 
+#about {
+	padding-left: 1.5rem;
+}
+
+#about-text {
+	margin: .5rem 0px 0px .2rem;
+}
+
 #background {
 	background: rgb(2, 0, 32);
 	background: linear-gradient(180deg, rgba(2, 0, 32, 1) 0%, rgba(11, 11, 79, 1) 50%, rgba(6, 42, 85, 1) 100%);
@@ -257,6 +247,9 @@ textarea {
 }
 
 #main-column {
+	animation: fadeInMainColumn ease-in .2s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
 	background: rgba(0, 0, 0, 0.0);
 	margin: 2rem auto;
 	padding: 0rem 1rem;
@@ -264,30 +257,18 @@ textarea {
 	z-index: 0;
 }
 
+@keyframes fadeInMainColumn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
 #menu-button {
 	display: none;
-}
-
-/*****************************************/
-
-#about {
-	padding-left: 1.5rem;
-}
-
-#about-text {
-	margin: .5rem 0px 0px .2rem;
-}
-
-#ddd-box {
-	margin-bottom: 4rem;
-}
-
-#welcome {
-	align-items: center;
-	display: flex;
-	flex-wrap: nowrap;
-	justify-content: center;
-	margin: 4rem 0px;
 }
 
 #profile-image {
@@ -320,6 +301,14 @@ textarea {
 	transition: opacity .5s ease-in-out;
 }
 
+#welcome {
+	align-items: center;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: center;
+	margin: 4rem 0px;
+}
+
 
 /*********************
 	Media Queries    *
@@ -344,20 +333,6 @@ textarea {
 
 	.flexbox {
 		display: block;
-	}
-
-	.lightbox {
-		background-color: inherit;
-		border-radius: inherit;
-		padding: inherit;
-	}
-
-	.subbox {
-		background-color: var(--light-bg);
-		border-radius: var(--radius);
-		margin-bottom: 1rem;
-		padding: 1.5rem 1rem;
-		width: 100%;
 	}
 
 	.thumbnail {
