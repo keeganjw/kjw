@@ -6,12 +6,13 @@ const session = require('express-session');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+
 const auth = require('./auth');
 const admin = require('./routes/admin');
 const blog = require('./routes/blog');
 const projects = require('./routes/projects');
+const root = require('./routes/root');
 const secrets = require('./secrets/secrets');
-const User = require('./models/user');
 
 // Require .env file if not in production
 if (process.env.NODE_ENV !== 'production') {
@@ -65,46 +66,10 @@ passport.deserializeUser((user, done) => {
 });
 
 // Set routes from other files
+app.use('/', root.router);
 app.use('/blog', blog.router);
 app.use('/projects', projects.router);
 app.use('/admin', auth.allowIfAuthenticated, admin.router);
-
-// Set remaining routes
-app.get('/', (req, res) => {
-	res.render('index', { title: 'Keegan Woodward' });
-});
-
-app.get('/about', (req, res) => {
-	res.render('about', { title: 'About' });
-});
-
-app.get('/resume', (req, res) => {
-	res.render('resume', { title: 'Resume' });
-});
-
-app.get('/login', (req, res) => {
-	res.render('login', { title: 'Login' });
-});
-
-app.post('/login', auth.redirectIfAuthenticated, passport.authenticate('local', {
-	successRedirect: '/admin',
-	failureRedirect: '/login',
-	failureFlash: true
-}));
-
-app.get('/logout', auth.allowIfAuthenticated, (req, res, next) => {
-	req.logout((error) => {
-		if (error) {
-			return next(error);
-		}
-
-		res.redirect('/login');
-	});
-});
-
-app.get('/blocked', (req, res) => {
-	res.send('blocked');
-});
 
 // Listen for HTTP requests at specified port number
 app.listen(port, () => {

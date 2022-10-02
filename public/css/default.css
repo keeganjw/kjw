@@ -52,11 +52,6 @@ form div {
 	padding-bottom: 1rem;
 }
 
-form textarea {
-	resize: vertical;
-	width: 100%;
-}
-
 h1,
 h2,
 h3,
@@ -76,6 +71,11 @@ hr {
 img {
 	border-radius: var(--radius);
 	width: 100%;
+}
+
+input {
+	padding: 4px;
+	width: 22rem;
 }
 
 label {
@@ -115,8 +115,10 @@ p {
 
 textarea {
 	font-family: 'Nunito', sans-serif;
-	height: 50rem;
+	height: 10rem;
 	padding: 1rem;
+	resize: vertical;
+	width: 100%;
 }
 
 
@@ -127,6 +129,10 @@ textarea {
 .blog-list-item {
 	display: flex;
 	margin-bottom: 4rem;
+}
+
+.button-row {
+	margin: 2rem 0rem 1rem 0rem;
 }
 
 .w40 {
@@ -226,18 +232,9 @@ textarea {
 	z-index: -1;
 }
 
-#button-row {
-	margin: 2rem 0rem 1rem 0rem;
-}
-
 #header-name {
 	font-size: 2.8rem;
 	font-weight: 900;
-}
-
-#login input {
-	padding: 4px;
-	width: 22rem;
 }
 
 #logo-image {

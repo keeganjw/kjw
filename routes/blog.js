@@ -1,10 +1,11 @@
 const dayjs = require('dayjs');
 const express = require('express');
-const router = express.Router();
 const showdown = require('showdown');
+
 const Post = require('../models/post');
 
 const markdown = new showdown.Converter();
+const router = express.Router();
 
 router.get('/', async (req, res) => {
 	let posts = await Post.find({ isPublished: true }).sort({ dateCreated: -1 }).lean();

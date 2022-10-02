@@ -9,7 +9,9 @@ form label {
 
 textarea {
 	font-family: monospace;
-	padding: 8px;
+	height: 50rem;
+	padding: 1rem;
+	
 }
 
 /***************
