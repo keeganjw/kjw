@@ -180,7 +180,7 @@ textarea {
 
 .underscore {
 	display: inline-block;
-	padding-bottom: .1rem;
+	padding-bottom: .3rem;
 	position: relative;
 }
 
@@ -189,10 +189,11 @@ textarea {
 }
 
 .underscore:after {
-	background-color: var(--dark-text);
+	/* background-color: var(--dark-text); */
+	background-color: #4E82CA;
 	content: '';
 	position: absolute;
-	height: 2px;
+	height: 3px;
 	bottom: 0;
 	left: 0;
 	opacity: .9;
@@ -278,8 +279,8 @@ textarea {
 #profile-image-wrapper {
 	position: relative;
 	/* Generated using: https://learnui.design/tools/gradient-generator.html */
-	/* background: linear-gradient(90deg, #81afed, #91b9f0, #a1c3f2, #b1cdf5, #c1d7f7, #d0e2f9, #e0ecfc, #f0f6fe); */
-	background: linear-gradient(90deg, #75d4fe, #8edafe, #a4e0fe, #b8e6ff, #cbedff, #ddf3ff, #eef9ff, #ffffff);
+	/* background: linear-gradient(90deg, #75d4fe, #8edafe, #a4e0fe, #b8e6ff, #cbedff, #ddf3ff, #eef9ff, #ffffff); */
+	background: linear-gradient(90deg, #4e82ca, #6490d2, #789fd9, #8caee1, #a0bde8, #b4ccef, #c8dbf7, #dceafe);
 	border-radius: 50%;
 	box-sizing: content-box;
 	padding: 8px;

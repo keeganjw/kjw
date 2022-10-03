@@ -21,6 +21,10 @@ router.post('/contact', (req, res) => {
 	res.redirect('contact');
 });
 
+router.get('/resume', (req, res) => {
+	res.render('resume', { title: 'Resume' });
+});
+
 router.get('/login', (req, res) => {
 	res.render('login', { title: 'Login' });
 });
