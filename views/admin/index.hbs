@@ -1,1 +1,15 @@
 <h1>Dashboard</h1>
+
+<h2>Messages</h2>
+
+{{#if messages}}
+	{{#each messages}}
+		<div style="margin-bottom: 2rem;">
+			<b>Name:</b> {{this.name}}<br>
+			<b>Email:</b> {{this.email}}<br>
+			<b>Message:</b> {{this.message}}
+		</div>
+	{{/each}}
+{{else}}
+	No new messages.
+{{/if}}

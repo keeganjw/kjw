@@ -1,14 +1,24 @@
 <h1>Contact</h1>
 
+<p style="margin-bottom: 2rem;">
+	Please enter your name, email address, and a message.<br>
+	I'll be in touch soon!
+</p>
+
 <form action="/contact" method="post">
 	<div style="margin-bottom: 1rem;">
-		<label for="emailAddress">Your Email Address:</label>
-		<input type="text" name="emailAddress" id="">
+		<label for="name">Name:</label>
+		<input type="text" name="name" id="name" required>
+	</div>
+
+	<div style="margin-bottom: 1rem;">
+		<label for="email">Email Address:</label>
+		<input type="email" name="email" id="email" required>
 	</div>
 
 	<div>
 		<label for="message">Message:</label>
-		<textarea name="message" id=""></textarea>
+		<textarea name="message" id="message" style="max-width: 40rem;" required></textarea>
 	</div>
 
 	<div class="button-row">

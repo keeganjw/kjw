@@ -4,6 +4,7 @@ const express = require('express');
 const fs = require('fs/promises');
 const showdown = require('showdown');
 
+const Message = require('../models/message');
 const Post = require('../models/post');
 const User = require('../models/user');
 
@@ -42,7 +43,8 @@ async function updatePost(req, res) {
 }
 
 router.get('/', async (req, res) => {
-	res.render('admin/index', { layout: 'layout-admin', title: 'Dashboard' });
+	const messages = await Message.find().sort({ dateCreated: -1 }).lean();
+	res.render('admin/index', { layout: 'layout-admin', title: 'Dashboard', messages: messages });
 });
 
 router.get('/published', async (req, res) => {
@@ -82,7 +84,7 @@ router.post('/new', async (req, res) => {
 			res.redirect(`/admin/draft`);
 		}
 	}
-	catch (error) {
+	catch(error) {
 		console.log(error);
 		res.render('admin/new', { layout: 'layout-admin', title: 'Write New Post', post: post });
 	}
