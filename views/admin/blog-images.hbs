@@ -14,7 +14,8 @@
 <h2>Available Images</h2>
 
 <div class="flexbox">
-	{{#each images}}
+	{{#if images}}
+		{{#each images}}
 		<div class="image-box">
 			<img src="/images/uploads/{{this}}" alt="An uploaded image.">
 		
@@ -23,11 +24,13 @@
 			</div>
 		
 			<div>
-				<button type="button" onclick="showModal(this.value)"
-					value="{{this}}">Delete</button>
+				<button type="button" onclick="showModal(this.value)" value="{{this}}">Delete</button>
 			</div>
 		</div>
-	{{/each}}
+		{{/each}}
+	{{else}}
+		<p>No images uploaded yet.</p>
+	{{/if}}
 </div>
 
 <div id="delete-confirmation" class="modal">

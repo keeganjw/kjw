@@ -73,7 +73,9 @@ img {
 	width: 100%;
 }
 
-input {
+input[type=text],
+input[type=email],
+input[type=password] {
 	padding: 4px;
 	width: 22rem;
 }

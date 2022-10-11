@@ -1,31 +1,35 @@
 <h1>{{title}}</h1>
 
-{{#each posts}}
-<div class="blog-list-item">
-	<div class="thumbnail-box">
-		{{#if this.thumbnail}}
+{{#if posts}}
+	{{#each posts}}
+	<div class="blog-list-item">
+		<div class="thumbnail-box">
+			{{#if this.thumbnail}}
 			<img class="thumbnail" src="{{this.thumbnail}}" alt="Thumbnail image for blog post '{{this.title}}'">
-		{{/if}}
-	</div>
-
-	<div>
-		<div class="post-title">
-			<a href="/admin/preview/{{this._id}}">{{this.title}}</a>
+			{{/if}}
 		</div>
-
-		<div class="post-description">
-			{{{this.description}}}
-		</div>
-
+	
 		<div>
-			By {{this.author}}<br>
-			<i>{{this.dateCreated}}</i>
-		</div>
-
-		<div>
-			<br>
-			<button onclick="location.href='/admin/edit/{{this._id}}'" type="button">Edit Post</button>
+			<div class="post-title">
+				<a href="/admin/preview/{{this._id}}">{{this.title}}</a>
+			</div>
+	
+			<div class="post-description">
+				{{{this.description}}}
+			</div>
+	
+			<div>
+				By {{this.author}}<br>
+				<i>{{this.dateCreated}}</i>
+			</div>
+	
+			<div>
+				<br>
+				<button onclick="location.href='/admin/edit/{{this._id}}'" type="button">Edit Post</button>
+			</div>
 		</div>
 	</div>
-</div>
-{{/each}}
+	{{/each}}
+{{else}}
+	<p>No posts yet!</p>
+{{/if}}
